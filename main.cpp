@@ -3,7 +3,7 @@
 
 int main()
 {
-
+	cout<<"Testing bitbucket";
 	ActionType ActType;
 	//Create an object of ApplicationManager
 	ApplicationManager AppManager;
