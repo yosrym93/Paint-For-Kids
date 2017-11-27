@@ -6,7 +6,7 @@ Output::Output()
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
 	
-	UI.width = 1250;
+	UI.width = 1315;
 	UI.height = 650;
 	UI.wx = 5;
 	UI.wy =5;
@@ -14,7 +14,7 @@ Output::Output()
 	
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 80;
+	UI.MenuItemWidth = 72;
 	
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -22,7 +22,7 @@ Output::Output()
 	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = TURQUOISE;
-	UI.PenWidth = 3;	//width of the figures frames
+	UI.PenWidth = 5;	//width of the figures frames
 
 	
 	//Create the output window
@@ -73,18 +73,30 @@ void Output::CreateDrawToolBar() const
 {
 	UI.InterfaceMode = MODE_DRAW;
 
-	//You can draw the tool bar icons in any way you want.
-	//Below is one possible way
-	
 	//First prepare List of images for each menu item
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
-	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
-	MenuItemImages[ITM_CIRC] = "images\\MenuItems\\Menu_Circ.jpg";
-	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
-	//TODO: Prepare images for each menu item and add it to the list
+	string MenuItemImages[DRAW_ITM_COUNT];
+	
+	MenuItemImages[ITM_LINE] = "images\\MenuItems\\line.jpg";
+	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
+	MenuItemImages[ITM_TRIG] = "images\\MenuItems\\Menu_Tri.jpg";
+	MenuItemImages[ITM_CIRC] = "images\\MenuItems\\Menu_Circ.jpg";
+	MenuItemImages[ITM_CHNG_DRAW_CLR] = "images\\MenuItems\\drawcolor1.jpg";
+	MenuItemImages[ITM_CHNG_FILL_CLR] = "images\\MenuItems\\fillcolor.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\select.jpg";
+	MenuItemImages[ITM_DELETE] = "images\\MenuItems\\delete.jpg";
+	MenuItemImages[ITM_COPY] = "images\\MenuItems\\copy.jpg";
+	MenuItemImages[ITM_CUT] = "images\\MenuItems\\cut.jpg";
+	MenuItemImages[ITM_PASTE] = "images\\MenuItems\\paste.jpg";
+	MenuItemImages[ITM_ROTATE] = "images\\MenuItems\\rotate.jpg";
+	MenuItemImages[ITM_BTF] = "images\\MenuItems\\bringtofront.jpg";
+	MenuItemImages[ITM_STB] = "images\\MenuItems\\sendtoback.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\load.jpg";
+	MenuItemImages[ITM_TO_PLAY] = "images\\MenuItems\\Menu_play.jpg";
+	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
 
 	//Draw menu item one image at a time
 	for(int i=0; i<DRAW_ITM_COUNT; i++)
@@ -93,7 +105,7 @@ void Output::CreateDrawToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(RED, 5);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
@@ -101,8 +113,60 @@ void Output::CreateDrawToolBar() const
 
 void Output::CreatePlayToolBar() const
 {
+
 	UI.InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
+
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0,0, UI.width, UI.height - UI.ToolBarHeight);
+
+	string MenuItemImages2[PLAY_ITM_COUNT];
+	
+	MenuItemImages2[ITM_P_H_TYPE] = "images\\MenuItems\\Pickbyshape.jpg";
+	MenuItemImages2[ITM_P_H_COLOR] = "images\\MenuItems\\Pickbycolor.jpg";
+	MenuItemImages2[ITM_P_H_BOTH] = "images\\MenuItems\\Pickbyboth.jpg";
+	MenuItemImages2[ITM_TO_DRAW] = "images\\MenuItems\\ToDraw.jpg";
+	MenuItemImages2[ITM_EXIT2] = "images\\MenuItems\\Menu_Exit.jpg";
+
+	//Draw menu item one image at a time
+	for (int i = 0; i<PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages2[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 5);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::CreateColorToolBar() const
+{
+	UI.InterfaceMode = MODE_COLOR;
+
+	pWind->SetPen(UI.BkGrndColor, 1);
+	pWind->SetBrush(UI.BkGrndColor);
+	pWind->DrawRectangle(0, 0, UI.width, UI.height - UI.ToolBarHeight);
+
+	string MenuItemImages2[COLOR_ITM_COUNT];
+	
+	MenuItemImages2[ITM_BLACK] = "images\\MenuItems\\Black.jpg";
+	MenuItemImages2[ITM_WHITE] = "images\\MenuItems\\White.jpg";
+	MenuItemImages2[ITM_RED] = "images\\MenuItems\\Red.jpg";
+	MenuItemImages2[ITM_GREEN] = "images\\MenuItems\\Green.jpg";
+	MenuItemImages2[ITM_BLUE] = "images\\MenuItems\\Blue.jpg";
+	MenuItemImages2[ITM_EXIT3] = "images\\MenuItems\\Menu_Exit.jpg";
+
+	//Draw menu item one image at a time
+	for (int i = 0; i<COLOR_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages2[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+
+	//Draw a line under the toolbar
+	pWind->SetPen(RED, 5);
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -110,7 +174,7 @@ void Output::ClearDrawArea() const
 {
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
-	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
+	pWind->DrawRectangle(0, UI.ToolBarHeight + 5 , UI.width, UI.height - UI.StatusBarHeight);
 	
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -148,7 +212,7 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	else			
 		DrawingClr = RectGfxInfo.DrawClr;
 	
-	pWind->SetPen(DrawingClr,1);
+	pWind->SetPen(DrawingClr, RectGfxInfo.BorderWdth);
 	drawstyle style;
 	if (RectGfxInfo.isFilled)	
 	{
@@ -163,7 +227,74 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) const //modified to implement the drawcirc function
+{
+	color DrawingClr;
+	if(selected)	
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else			
+		DrawingClr = CircGfxInfo.DrawClr;
+	
+	pWind->SetPen(DrawingClr, CircGfxInfo.BorderWdth);
+	drawstyle style;
+	if (CircGfxInfo.isFilled)	
+	{
+		style = FILLED;		
+		pWind->SetBrush(CircGfxInfo.FillClr);
+	}
+	else	
+		style = FRAME;
+	float radius=abs(P1.x-P2.x);
+	
+	pWind->DrawCircle(P1.x, P1.y,radius, style);
+	
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+void Output::DrawLine(Point P1, Point P2, GfxInfo LineGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if(selected)	
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else			
+		DrawingClr = LineGfxInfo.DrawClr;
+	
+	pWind->SetPen(DrawingClr, LineGfxInfo.BorderWdth);
+	drawstyle style;
+	style = FRAME;
+	pWind->DrawLine(P1.x,P1.y,P2.x,P2.y,style);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+void Output::DrawTrig(Point P1, Point P2, Point P3, GfxInfo TrigGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = TrigGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, TrigGfxInfo.BorderWdth);
+	drawstyle style;
+	if (TrigGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(TrigGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {

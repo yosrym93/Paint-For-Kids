@@ -34,15 +34,15 @@ string Input::GetSrting(Output *pO) const
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const
-{	
-	int x,y;
+{
+	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 
-	if(UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
+	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
-		if ( y >= 0 && y < UI.ToolBarHeight)
-		{	
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
@@ -51,32 +51,88 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_RECT: return DRAW_RECT;
-			case ITM_CIRC: return DRAW_CIRC;
-			case ITM_EXIT: return EXIT;	
-			
+			case ITM_LINE:return DRAW_LINE;
+			case ITM_RECT:return DRAW_RECT;
+			case ITM_TRIG:return DRAW_TRIG;
+			case ITM_CIRC:return DRAW_CIRC;
+			case ITM_CHNG_DRAW_CLR:return CHNG_DRAW_CLR;
+			case ITM_CHNG_FILL_CLR:return CHNG_FILL_CLR;
+			case ITM_SELECT:return SELECT;
+			case ITM_DELETE:return DEL;
+			case ITM_COPY:return COPY;
+			case ITM_CUT:return CUT;
+			case ITM_PASTE:return PASTE;
+			case ITM_ROTATE:return ROTATE;
+			case ITM_BTF:return BTF;
+			case ITM_STB:return STB;
+			case ITM_SAVE:return SAVE;
+			case ITM_LOAD:return LOAD;
+			case ITM_TO_PLAY:return TO_PLAY;
+			case ITM_EXIT:return EXIT;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
 
 		//[2] User clicks on the drawing area
-		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
-			return DRAWING_AREA;	
+			return DRAWING_AREA;
 		}
-		
+
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
-	else	//GUI is in PLAY mode
+	else if (UI.InterfaceMode == MODE_PLAY)
+		{
+			//[1] If user clicks on the Toolbar
+			if (y >= 0 && y < UI.ToolBarHeight)
+			{
+				int ClickedItemOrder = (x / UI.MenuItemWidth);
+				switch (ClickedItemOrder)
+				{
+				case ITM_P_H_TYPE:return P_H_TYPE;
+				case ITM_P_H_COLOR:return P_H_COLOR;
+				case ITM_P_H_BOTH:return P_H_BOTH;
+				case ITM_TO_DRAW:return TO_DRAW;
+				case ITM_EXIT2: return EXIT;
+				default: return EMPTY;
+				}
+			}
+			//[2] User clicks on the drawing area
+			if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+			{
+				return DRAWING_AREA;
+			}
+			//[3] User clicks on the status bar
+			return STATUS;
+		}
+	else if (UI.InterfaceMode == MODE_COLOR)
 	{
-		///TODO:
-		//perform checks similar to Draw mode checks above
-		//and return the correspoding action
-		return TO_PLAY;	//just for now. This should be updated
-	}	
-
+		//[1] If user clicks on the Toolbar
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			switch (ClickedItemOrder)
+			{
+			case ITM_BLACK:return SET_BLACK;
+			case ITM_WHITE:return SET_WHITE;
+			case ITM_RED:return SET_RED;
+			case ITM_GREEN:return SET_GREEN;
+			case ITM_BLUE:return SET_BLUE;
+			case ITM_EXIT3: return EXIT;
+			default: return EMPTY;
+			}
+		}
+		//[2] User clicks on the drawing area
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		{
+			return DRAWING_AREA;
+		}
+		//[3] User clicks on the status bar
+		return STATUS;
+	}
 }
+	
 /////////////////////////////////
 	
 Input::~Input()
