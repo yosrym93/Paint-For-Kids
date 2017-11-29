@@ -1,5 +1,6 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
+#include "Actions\SelectAction.h"
 
 
 //Constructor
@@ -10,7 +11,7 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
-		
+	SelectedFig = NULL;
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
 		FigList[i] = NULL;	
@@ -40,6 +41,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_LINE:
 			///create AddLineAction here
 
+			break;
+		case SELECT:
+			pAct = new SelectAction(this);
 			break;
 
 		case EXIT:
@@ -74,12 +78,19 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 	//If a figure is found return a pointer to it.
 	//if this point (x,y) does not belong to any figure return NULL
-
-
-	//Add your code here to search for a figure given a point x,y	
-	//Remember that ApplicationManager only calls functions do NOT implement it.
-
+	for (int i = FigCount - 1; i >= 0; i--) {
+		if (FigList[i]->IsOnFig(x, y))
+			return FigList[i];
+	}
 	return NULL;
+}
+////////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::SetSelectedFigure(CFigure* sf) {
+	SelectedFig = sf;
+}
+////////////////////////////////////////////////////////////////////////////////////
+CFigure* ApplicationManager::GetSelectedFigure() const {
+	return SelectedFig;
 }
 //==================================================================================//
 //							Interface Management Functions							//
@@ -107,4 +118,12 @@ ApplicationManager::~ApplicationManager()
 	delete pIn;
 	delete pOut;
 	
+}
+
+void ApplicationManager::GetDrawPoint(int &x, int &y) const {
+	pIn->GetPointClicked(x, y);
+	while ((y < UI.ToolBarHeight + 4) || y > (UI.height - UI.StatusBarHeight)) {
+		pOut->PrintMessage("Please click a point in the drawing area");
+		pIn->GetPointClicked(x, y);
+	}
 }

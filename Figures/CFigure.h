@@ -24,7 +24,8 @@ public:
 	
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
-
+	virtual bool IsOnFig(int, int) const = 0;  //Checks if a given point is on the figure
+	//ana el 3amelha lazem t3mlha override f kol figure gded, Yosry.
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 
