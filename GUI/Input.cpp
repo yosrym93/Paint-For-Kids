@@ -132,7 +132,15 @@ ActionType Input::GetUserAction() const
 		return STATUS;
 	}
 }
-	
+
+void Input::GetDrawPoint(int &x, int &y,Output* pO) const {
+	GetPointClicked(x, y);
+	while ((y < UI.ToolBarHeight + 4) || y >(UI.height - UI.StatusBarHeight)) {
+		pO->PrintMessage("Please click a point in the drawing area");
+		GetPointClicked(x, y);
+	}
+}
+
 /////////////////////////////////
 	
 Input::~Input()

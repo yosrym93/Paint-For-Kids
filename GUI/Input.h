@@ -15,7 +15,7 @@ public:
 	Input(window *pW);							//Consturctor
 	void GetPointClicked(int &x, int &y) const; //Get coordinate where user clicks
 	string GetSrting(Output* pO) const ;	    //Returns a string entered by the user
-
+	void GetDrawPoint(int &x, int &y, Output*) const;	//Gets a point on the drawing area
 	ActionType GetUserAction() const;			//Read the user click and map to an action
 
 	~Input();

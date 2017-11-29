@@ -120,10 +120,3 @@ ApplicationManager::~ApplicationManager()
 	
 }
 
-void ApplicationManager::GetDrawPoint(int &x, int &y) const {
-	pIn->GetPointClicked(x, y);
-	while ((y < UI.ToolBarHeight + 4) || y > (UI.height - UI.StatusBarHeight)) {
-		pOut->PrintMessage("Please click a point in the drawing area");
-		pIn->GetPointClicked(x, y);
-	}
-}
