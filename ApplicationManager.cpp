@@ -1,6 +1,10 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
 #include "Actions\SelectAction.h"
+#include"../paintforkids/AddLineAction.h"
+#include"../paintforkids/AddCircAction.h"
+#include"../paintforkids/AddTrigAction.h"
+
 
 
 //Constructor
@@ -39,9 +43,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case DRAW_LINE:
-			///create AddLineAction here
-
+			pAct = new AddLineAction(this);
 			break;
+
+		case DRAW_CIRC:
+			pAct = new AddCircAction(this);
+			break;
+
+		case DRAW_TRIG:
+			pAct = new AddTrigAction(this);
+			break;
+
 		case SELECT:
 			pAct = new SelectAction(this);
 			break;
