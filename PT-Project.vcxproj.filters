@@ -148,6 +148,24 @@
     <ClCompile Include="Actions\SelectAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="AddLineAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CLine.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AddCircAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CCirc.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="AddTrigAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrig.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -237,6 +255,24 @@
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Actions\SelectAction.h">
       <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddLineAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CLine.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddCircAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CCirc.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="AddTrigAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrig.h">
+      <Filter>Figures Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
