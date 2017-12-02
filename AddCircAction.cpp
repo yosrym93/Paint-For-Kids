@@ -24,7 +24,7 @@ void AddCircAction::ReadActionParameters()
 	pOut->PrintMessage("New Circle: Click at Edge ");
 
 	//Read Edge and store in point P2
-	pIn->GetDrawPoint(P2.x, P2.y, pOut);
+	pIn->GetDrawCircPoint(P2.x, P2.y, pOut, P1.x, P1.y);
 
 	CircGfxInfo.isFilled = false;	//default is not filled
 									//get drawing, filling colors and pen width from the interface

@@ -141,6 +141,16 @@ void Input::GetDrawPoint(int &x, int &y,Output* pO) const {
 	}
 }
 
+void Input::GetDrawCircPoint(int &x, int &y, Output *pO, int xCenter, int yCenter) const {
+	GetDrawPoint(x, y, pO);
+	float radius = sqrt((x - xCenter)*(x - xCenter) + (y - yCenter)*(y - yCenter));
+	while (radius >= yCenter - (UI.ToolBarHeight + 4)) {
+		pO->PrintMessage("This point will cause the circle to overlap the toolbar, please pick a closer point to the center");
+		GetDrawPoint(x, y, pO);
+		radius = sqrt((x - xCenter)*(x - xCenter) + (y - yCenter)*(y - yCenter));
+	}
+}
+
 /////////////////////////////////
 	
 Input::~Input()

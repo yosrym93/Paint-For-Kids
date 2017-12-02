@@ -247,7 +247,7 @@ void Output::DrawCirc(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) co
 	}
 	else	
 		style = FRAME;
-	float radius=abs(P1.x-P2.x);
+	float radius=sqrt((P1.x-P2.x)*(P1.x-P2.x) + (P1.y-P2.y)*(P1.y-P2.y));
 	
 	pWind->DrawCircle(P1.x, P1.y,radius, style);
 	

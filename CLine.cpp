@@ -14,13 +14,18 @@ void CLine::Draw(Output* pOut)const
 
 }
 
-bool CLine:: IsOnFig(int x, int y) const
+bool CLine::IsOnFig(int x, int y) const
 {
-	/// saybha le yosry m5tsh baly enha tab3k ;)
-	//to check if the point is on figure we calculate the slope and compare with it
-	double slope;
-	slope =  (end.y - start.y) / (end.x - start.x);
-	double c = start.y - (slope*start.x);
-	//return (slope == (end.y - y) / (end.x - x));
-	return (y == (slope*x + c));
+	int x1 = start.x;
+	int y1 = start.y;
+	int x2 = end.x;
+	int y2 = end.y;
+
+	double AB = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+	double AP = sqrt((x - x1)*(x - x1) + (y - y1)*(y - y1));
+	double PB = sqrt((x2 - x)*(x2 - x) + (y2 - y)*(y2 - y));
+	if (AB - (AP + PB) <= 0.25 && AB - (AP + PB) >= -0.25)
+		return true;
+	else
+		return false;
 }

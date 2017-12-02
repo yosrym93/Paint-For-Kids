@@ -15,6 +15,6 @@ void CCirc::Draw(Output* pOut) const
 bool CCirc::IsOnFig(int x, int y) const
 {
 	//to check if the point in the circle wa check the distance between center and the point if it is within the range
-	double radius = abs(Center.x - Edge.x);
-	return (radius >= abs(x - Center.x));
+	double radius = sqrt((Center.x - Edge.x)*(Center.x - Edge.x)+ (Center.y - Edge.y)*(Center.y - Edge.y));
+	return (radius >= sqrt((Center.x - x)*(Center.x - x) + (Center.y - y)*(Center.y - y)));
 }
