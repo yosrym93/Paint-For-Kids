@@ -1,9 +1,15 @@
+#pragma once
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
 #include "Actions\SelectAction.h"
 #include"../paintforkids/AddLineAction.h"
 #include"../paintforkids/AddCircAction.h"
 #include"../paintforkids/AddTrigAction.h"
+#include "PickByColor.h"
+#include "PickByType.h"
+#include "PickByBoth.h"
+
+
 
 
 
@@ -58,6 +64,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SelectAction(this);
 			break;
 
+		case COPY:
+			pAct = new PickByBoth(this);//this is a test
+			break;
 		case EXIT:
 			///create ExitAction here
 			
@@ -75,21 +84,38 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
 
+//Transfer figures in FigList to playmode
+CFigure * ApplicationManager::DrawnFigs(int i) const
+{
+	return FigList[i];
+}
+//Transfer FigCount to playmode to avoid unnessecary loops
+int ApplicationManager::getFigCount() const
+{
+	return FigCount;
+}
+////////////////////////////////////////////////////////////////////////////////////
 //Add a figure to the list of figures
 void ApplicationManager::AddFigure(CFigure* pFig)
 {
-	if(FigCount < MaxFigCount )
-		FigList[FigCount++] = pFig;	
+	if (FigCount < MaxFigCount)
+	{
+		FigList[FigCount] = pFig;
+		FigList[FigCount]->SetID(FigCount);
+		FigCount++;
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
+//If a figure is found return a pointer to it.
+//if this point (x,y) does not belong to any figure return NULL
 CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
-	//If a figure is found return a pointer to it.
-	//if this point (x,y) does not belong to any figure return NULL
+
 	for (int i = FigCount - 1; i >= 0; i--) {
 		if (FigList[i]->IsOnFig(x, y))
 			return FigList[i];

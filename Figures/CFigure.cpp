@@ -11,6 +11,16 @@ void CFigure::SetSelected(bool s)
 
 bool CFigure::IsSelected() const
 {	return Selected; }
+//Sends color info to playmode
+GfxInfo CFigure::GetGfxInfo() const
+{
+	return FigGfxInfo;
+}
+
+void CFigure::SetID(int id)
+{
+	ID = id;
+}
 
 void CFigure::ChngDrawClr(color Dclr)
 {	FigGfxInfo.DrawClr = Dclr; }
