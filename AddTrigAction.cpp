@@ -27,7 +27,7 @@ void AddTrigAction::ReadActionParameters()
 	//Read corner 2 and store in point P2
 	pIn->GetDrawPoint(P2.x, P2.y, pOut);
 
-	pOut->PrintMessage("New Triangle: Click at Corner 2 ");
+	pOut->PrintMessage("New Triangle: Click at Corner 3 ");
 
 	//Read corner 3 and store in point P3
 	pIn->GetDrawPoint(P3.x, P3.y, pOut);
