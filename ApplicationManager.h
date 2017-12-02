@@ -17,6 +17,7 @@ private:
 
 	CFigure* SelectedFig; //Pointer to the selected figure
 	CFigure* Clipboard;   //Pointer to the copied/cut figure
+	
 
 	//Pointers to Input and Output classes
 	Input *pIn;
@@ -36,8 +37,8 @@ public:
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	void SetSelectedFigure(CFigure*);
 	CFigure* GetSelectedFigure() const;
-	
-		
+	CFigure* DrawnFigs(int) const;					//Transfer figures in FigList to playmode
+	int getFigCount() const;
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output

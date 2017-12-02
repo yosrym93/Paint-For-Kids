@@ -178,6 +178,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="AddLineAction.cpp" />
     <ClCompile Include="CLine.cpp" />
+    <ClCompile Include="PickByBoth.cpp" />
+    <ClCompile Include="PickByColor.cpp" />
+    <ClCompile Include="PickByType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\SelectAction.h" />
@@ -216,6 +219,9 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+    <ClInclude Include="PickByBoth.h" />
+    <ClInclude Include="PickByColor.h" />
+    <ClInclude Include="PickByType.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

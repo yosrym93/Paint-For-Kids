@@ -166,6 +166,11 @@
     <ClCompile Include="CTrig.cpp">
       <Filter>Figures Classes</Filter>
     </ClCompile>
+    <ClCompile Include="PickByColor.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PickByType.cpp" />
+    <ClCompile Include="PickByBoth.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -274,6 +279,11 @@
     <ClInclude Include="CTrig.h">
       <Filter>Figures Classes</Filter>
     </ClInclude>
+    <ClInclude Include="PickByColor.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PickByType.h" />
+    <ClInclude Include="PickByBoth.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
