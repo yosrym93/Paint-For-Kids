@@ -61,7 +61,6 @@ enum ColorMenuItem //The items of the Color menu (you should add more items)
 	ITM_RED,		//Red color item in menu
 	ITM_GREEN,		//Green color item in menu
 	ITM_BLUE,		//Blue color item in menu
-	ITM_EXIT3,		//Exit item in menu
 
 	COLOR_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 
@@ -82,6 +81,7 @@ struct UI_Info	//User Interface Info.
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 		MenuItemWidth;		//Width of each item in toolbar menu
 	
+	bool isFilled;
 
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color

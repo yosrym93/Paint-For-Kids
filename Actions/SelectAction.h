@@ -11,10 +11,10 @@ private:
 public:
 	SelectAction(ApplicationManager *pApp);
 
-	//Reads rectangle parameters
+	//Reads select parameters
 	virtual void ReadActionParameters();
 
-	//Add rectangle to the ApplicationManager
+	//Executes the select action
 	virtual void Execute();
 	void Select();
 	void Unselect();

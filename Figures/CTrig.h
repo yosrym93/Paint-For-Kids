@@ -1,5 +1,5 @@
 #pragma once
-#include "Figures\CFigure.h"
+#include "CFigure.h"
 
 class CTrig : public CFigure
 {

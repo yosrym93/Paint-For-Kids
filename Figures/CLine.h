@@ -1,6 +1,6 @@
 #pragma once
 
-#include"Figures\CFigure.h"
+#include "CFigure.h"
 class CLine :public CFigure
 {
 private:

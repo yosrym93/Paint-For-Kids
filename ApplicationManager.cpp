@@ -1,10 +1,11 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
 #include "Actions\SelectAction.h"
-#include"../paintforkids/AddLineAction.h"
-#include"../paintforkids/AddCircAction.h"
-#include"../paintforkids/AddTrigAction.h"
-
+#include"Actions\AddLineAction.h"
+#include"Actions\AddCircAction.h"
+#include"Actions\AddTrigAction.h"
+#include"Actions\ChngDrawClrAction.h"
+#include"Actions\ChngFillClrAction.h"
 
 
 //Constructor
@@ -53,6 +54,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_TRIG:
 			pAct = new AddTrigAction(this);
 			break;
+			
+		case CHNG_DRAW_CLR:
+			pAct = new ChngDrawClrAction(this);
+			break;
+
+		case CHNG_FILL_CLR:
+			pAct = new ChngFillClrAction(this);
+			break;
 
 		case SELECT:
 			pAct = new SelectAction(this);
@@ -74,6 +83,46 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;	//Action is not needed any more ==> delete it
 		pAct = NULL;
 	}
+}
+
+bool ApplicationManager::GetColor(color &inputColor) {
+	
+	bool isColor = true;
+	//Creating the color toolbar
+	pOut->CreateColorToolBar();
+
+	//Inputting draw color action
+	ActionType inputColorAction = pIn->GetUserAction();
+
+	switch (inputColorAction) {
+	case SET_BLACK:
+		inputColor = BLACK;
+		break;
+
+	case SET_WHITE:
+		inputColor = WHITE;
+		break;
+
+	case SET_RED:
+		inputColor = RED;
+		break;
+
+	case SET_GREEN:
+		inputColor = GREEN;
+		break;
+
+	case SET_BLUE:
+		inputColor = BLUE;
+		break;
+
+	default:
+		isColor = false;
+	}
+
+	//Restoring the draw toolbar
+	pOut->CreateDrawToolBar();
+
+	return isColor;
 }
 //==================================================================================//
 //						Figures Management Functions								//

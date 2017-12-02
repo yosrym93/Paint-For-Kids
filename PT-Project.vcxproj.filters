@@ -17,7 +17,7 @@
       <UniqueIdentifier>{03fd4e0d-92e0-4271-bb9b-d6e9f21ec35f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Application Manager">
-      <UniqueIdentifier>{be3a4e10-d854-4bf8-9add-2f85904b4103}</UniqueIdentifier>
+      <UniqueIdentifier>{14a70d1b-2069-4c32-932c-feb2aeb84916}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -141,30 +141,36 @@
     <ClCompile Include="GUI\Output.cpp">
       <Filter>GUI Classes</Filter>
     </ClCompile>
-    <ClCompile Include="ApplicationManager.cpp">
-      <Filter>Application Manager</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Actions\SelectAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="AddLineAction.cpp">
+    <ClCompile Include="Actions\AddCircAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="CLine.cpp">
-      <Filter>Figures Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="AddCircAction.cpp">
+    <ClCompile Include="Actions\AddTrigAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="CCirc.cpp">
-      <Filter>Figures Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="AddTrigAction.cpp">
+    <ClCompile Include="Actions\AddLineAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="CTrig.cpp">
+    <ClCompile Include="Figures\CLine.cpp">
       <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures\CCirc.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures\CTrig.cpp">
+      <Filter>Figures Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ApplicationManager.cpp">
+      <Filter>Application Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ChngDrawClrAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\ChngFillClrAction.cpp">
+      <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -249,30 +255,36 @@
     <ClInclude Include="GUI\UI_Info.h">
       <Filter>GUI Classes</Filter>
     </ClInclude>
-    <ClInclude Include="ApplicationManager.h">
-      <Filter>Application Manager</Filter>
-    </ClInclude>
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Actions\SelectAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="AddLineAction.h">
+    <ClInclude Include="Actions\AddCircAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="CLine.h">
-      <Filter>Figures Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="AddCircAction.h">
+    <ClInclude Include="Actions\AddTrigAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="CCirc.h">
-      <Filter>Figures Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="AddTrigAction.h">
+    <ClInclude Include="Actions\AddLineAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="CTrig.h">
+    <ClInclude Include="Figures\CLine.h">
       <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CCirc.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures\CTrig.h">
+      <Filter>Figures Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ApplicationManager.h">
+      <Filter>Application Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ChngDrawClrAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ChngFillClrAction.h">
+      <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
