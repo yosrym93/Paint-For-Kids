@@ -18,3 +18,9 @@ bool CCirc::IsOnFig(int x, int y) const
 	double radius = sqrt((Center.x - Edge.x)*(Center.x - Edge.x)+ (Center.y - Edge.y)*(Center.y - Edge.y));
 	return (radius >= sqrt((Center.x - x)*(Center.x - x) + (Center.y - y)*(Center.y - y)));
 }
+
+void CCirc::PrintInfo(Output* pOut) const {
+	string message = "Circle, ID: " + to_string(ID) + ", Center (" + to_string(Center.x) + "," + to_string(Center.y)
+		+ "), Radius: " + to_string(int(sqrt((Center.x - Edge.x)*(Center.x - Edge.x) + (Center.y - Edge.y)*(Center.y - Edge.y))));
+	pOut->PrintMessage(message);
+}

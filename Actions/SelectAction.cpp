@@ -46,6 +46,8 @@ void SelectAction::Execute()
 void SelectAction::Select() { 
 	SelectedFig->SetSelected(true);
 	pManager->SetSelectedFigure(SelectedFig); //Set the ApplicationManager SelectedFig pointer
+	Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
+	SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar
 }
 
 //Unselect a selected figure

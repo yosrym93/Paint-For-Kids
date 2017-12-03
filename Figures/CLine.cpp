@@ -29,3 +29,10 @@ bool CLine::IsOnFig(int x, int y) const
 	else
 		return false;
 }
+
+void CLine::PrintInfo(Output* pOut) const {
+	string message = "Line, ID: " + to_string(ID) + ", Corner 1: (" + to_string(start.x) + "," + to_string(start.y)
+		+ "), Corner 2: (" + to_string(end.x) + "," + to_string(end.y) + "), Length: "
+		+ to_string(int(sqrt((start.x - end.x)*(start.x - end.x) + (start.y - end.y)*(start.y - end.y))));
+	pOut->PrintMessage(message);
+}

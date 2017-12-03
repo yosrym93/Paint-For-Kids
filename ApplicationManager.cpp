@@ -7,6 +7,7 @@
 #include"Actions\AddTrigAction.h"
 #include"Actions\ChngDrawClrAction.h"
 #include"Actions\ChngFillClrAction.h"
+#include"Actions\ToPlayAction.h"
 #include "PickByColor.h"
 #include "PickByType.h"
 #include "PickByBoth.h"
@@ -74,6 +75,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case COPY:
 			pAct = new PickByBoth(this);//this is a test
 			break;
+
+		case TO_PLAY:
+			pAct = new ToPlayAction(this);//this is a test
+			break;
+
 		case EXIT:
 			///create ExitAction here
 			

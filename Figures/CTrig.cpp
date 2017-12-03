@@ -56,3 +56,10 @@ bool CTrig::isOnLine(int x1, int y1, int x2, int y2, int x, int y) const {
 	double PB = sqrt((x2 - x)*(x2 - x) + (y2 - y)*(y2 - y));
 	return (AB - (AP + PB) <= 0.35 && AB - (AP + PB) >= -0.35);
 }
+
+void CTrig::PrintInfo(Output* pOut) const {
+	string message = "Triangle, ID: " + to_string(ID) + ", Corner 1: (" + to_string(Corner1.x) + "," + to_string(Corner1.y)
+		+ "), Corner 2: (" + to_string(Corner2.x) + "," + to_string(Corner2.y) + "), Corner 3: (" + to_string(Corner3.x) 
+		+ "," + to_string(Corner3.y) + ")";
+	pOut->PrintMessage(message);
+}
