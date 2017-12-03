@@ -1,10 +1,10 @@
 #include "AddCircAction.h"
-#include "../paintforkids/CCirc.h"
+#include "../Figures/CCirc.h"
 
-#include "../paintforkids/ApplicationManager.h"
+#include "../ApplicationManager.h"
 
-#include "../paintforkids/GUI/Input.h"
-#include "../paintforkids/GUI/Output.h"
+#include "../GUI/Input.h"
+#include "../GUI/Output.h"
 
 AddCircAction::AddCircAction(ApplicationManager *pApp) :Action(pApp)
 {
@@ -26,7 +26,7 @@ void AddCircAction::ReadActionParameters()
 	//Read Edge and store in point P2
 	pIn->GetDrawCircPoint(P2.x, P2.y, pOut, P1.x, P1.y);
 
-	CircGfxInfo.isFilled = false;	//default is not filled
+	CircGfxInfo.isFilled = pOut->getIsFilled();	//default is not filled
 									//get drawing, filling colors and pen width from the interface
 	CircGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	CircGfxInfo.FillClr = pOut->getCrntFillColor();

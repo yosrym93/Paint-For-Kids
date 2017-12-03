@@ -38,10 +38,15 @@ ActionType Input::GetUserAction() const
 	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 
-	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
+	//[1] User clicks on the drawing area
+	if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 	{
-		//[1] If user clicks on the Toolbar
-		if (y >= 0 && y < UI.ToolBarHeight)
+		return DRAWING_AREA;
+	}
+
+	//[2] If user clicks on the Toolbar
+	else if (y >= 0 && y < UI.ToolBarHeight) {
+		if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
@@ -72,44 +77,20 @@ ActionType Input::GetUserAction() const
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
-
-		//[2] User clicks on the drawing area
-		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		else if (UI.InterfaceMode == MODE_PLAY)
 		{
-			return DRAWING_AREA;
-		}
-
-		//[3] User clicks on the status bar
-		return STATUS;
-	}
-	else if (UI.InterfaceMode == MODE_PLAY)
-		{
-			//[1] If user clicks on the Toolbar
-			if (y >= 0 && y < UI.ToolBarHeight)
+			int ClickedItemOrder = (x / UI.MenuItemWidth);
+			switch (ClickedItemOrder)
 			{
-				int ClickedItemOrder = (x / UI.MenuItemWidth);
-				switch (ClickedItemOrder)
-				{
-				case ITM_P_H_TYPE:return P_H_TYPE;
-				case ITM_P_H_COLOR:return P_H_COLOR;
-				case ITM_P_H_BOTH:return P_H_BOTH;
-				case ITM_TO_DRAW:return TO_DRAW;
-				case ITM_EXIT2: return EXIT;
-				default: return EMPTY;
-				}
+			case ITM_P_H_TYPE:return P_H_TYPE;
+			case ITM_P_H_COLOR:return P_H_COLOR;
+			case ITM_P_H_BOTH:return P_H_BOTH;
+			case ITM_TO_DRAW:return TO_DRAW;
+			case ITM_EXIT2: return EXIT;
+			default: return EMPTY;
 			}
-			//[2] User clicks on the drawing area
-			if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
-			{
-				return DRAWING_AREA;
-			}
-			//[3] User clicks on the status bar
-			return STATUS;
 		}
-	else if (UI.InterfaceMode == MODE_COLOR)
-	{
-		//[1] If user clicks on the Toolbar
-		if (y >= 0 && y < UI.ToolBarHeight)
+		else if (UI.InterfaceMode == MODE_COLOR)
 		{
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
 			switch (ClickedItemOrder)
@@ -119,18 +100,13 @@ ActionType Input::GetUserAction() const
 			case ITM_RED:return SET_RED;
 			case ITM_GREEN:return SET_GREEN;
 			case ITM_BLUE:return SET_BLUE;
-			case ITM_EXIT3: return EXIT;
 			default: return EMPTY;
 			}
 		}
-		//[2] User clicks on the drawing area
-		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
-		{
-			return DRAWING_AREA;
-		}
-		//[3] User clicks on the status bar
-		return STATUS;
 	}
+
+	//[3] User clicks on the status bar
+	return STATUS;
 }
 
 void Input::GetDrawPoint(int &x, int &y,Output* pO) const {

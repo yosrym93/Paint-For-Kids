@@ -1,10 +1,10 @@
 #include "AddTrigAction.h"
-#include "../paintforkids/CTrig.h"
+#include "../Figures/CTrig.h"
 
-#include "../paintforkids/ApplicationManager.h"
+#include "../ApplicationManager.h"
 
-#include "../paintforkids/GUI/Input.h"
-#include "../paintforkids/GUI/Output.h"
+#include "../GUI/Input.h"
+#include "../GUI/Output.h"
 
 
 AddTrigAction::AddTrigAction(ApplicationManager *pApp) :Action(pApp)
@@ -32,8 +32,8 @@ void AddTrigAction::ReadActionParameters()
 	//Read corner 3 and store in point P3
 	pIn->GetDrawPoint(P3.x, P3.y, pOut);
 
-	TrigGfxInfo.isFilled = false;	//default is not filled
-									//get drawing, filling colors and pen width from the interface
+	TrigGfxInfo.isFilled = pOut->getIsFilled();	//default is not filled
+	//get drawing, filling colors and pen width from the interface
 	TrigGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	TrigGfxInfo.FillClr = pOut->getCrntFillColor();
 	TrigGfxInfo.BorderWdth = pOut->getCrntPenWidth();

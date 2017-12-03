@@ -23,6 +23,7 @@ Output::Output()
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 5;	//width of the figures frames
+	UI.isFilled = false;
 
 	
 	//Create the output window
@@ -156,7 +157,6 @@ void Output::CreateColorToolBar() const
 	MenuItemImages2[ITM_RED] = "images\\MenuItems\\Red.jpg";
 	MenuItemImages2[ITM_GREEN] = "images\\MenuItems\\Green.jpg";
 	MenuItemImages2[ITM_BLUE] = "images\\MenuItems\\Blue.jpg";
-	MenuItemImages2[ITM_EXIT3] = "images\\MenuItems\\Menu_Exit.jpg";
 
 	//Draw menu item one image at a time
 	for (int i = 0; i<COLOR_ITM_COUNT; i++)
@@ -199,6 +199,22 @@ color Output::getCrntFillColor() const	//get current filling color
 	
 int Output::getCrntPenWidth() const		//get current pen width
 {	return UI.PenWidth;	}
+
+bool Output::getIsFilled() const {
+	return UI.isFilled;
+}
+
+void Output::setCrntDrawColor(color c) {
+	UI.DrawColor = c;
+}
+
+void Output::setCrntFillColor(color c) {
+	UI.FillColor = c;
+}
+
+void Output::setIsFilled(bool isF) {
+	UI.isFilled = isF;
+}
 
 //======================================================================================//
 //								Figures Drawing Functions								//
