@@ -1,7 +1,6 @@
 #include "ToPlayAction.h"
 #include "..\ApplicationManager.h"
 
-#include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
 ToPlayAction::ToPlayAction(ApplicationManager *pApp) :Action(pApp)

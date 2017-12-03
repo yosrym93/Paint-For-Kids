@@ -5,6 +5,7 @@
 #include"Actions\AddLineAction.h"
 #include"Actions\AddCircAction.h"
 #include"Actions\AddTrigAction.h"
+#include"Actions\DeleteAction.h"
 #include"Actions\ChngDrawClrAction.h"
 #include"Actions\ChngFillClrAction.h"
 #include"Actions\ToPlayAction.h"
@@ -76,8 +77,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByBoth(this);//this is a test
 			break;
 
+		case DEL:
+			pAct = new DeleteAction(this);
+			break;
+
 		case TO_PLAY:
-			pAct = new ToPlayAction(this);//this is a test
+			pAct = new ToPlayAction(this);
 			break;
 
 		case EXIT:
@@ -162,6 +167,20 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 		FigCount++;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////////
+//Removes a figure from the list of figures by its ID , then sorts the array
+void ApplicationManager::RemoveFig(int ID) {
+	//Loops on all figures ,starting at the index of the deleted one, shifting them back 1 element and setting their ID
+	for (int i = ID; i < FigCount - 1; i++) {
+		FigList[i] = FigList[i + 1];
+		FigList[i]->SetID(i);
+	}
+	//Reduce FigCount by 1 and nullify the extra pointer (used to point at the deleted figure)
+	FigCount--;
+	FigList[FigCount] = NULL;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 //If a figure is found return a pointer to it.
 //if this point (x,y) does not belong to any figure return NULL
@@ -188,7 +207,8 @@ CFigure* ApplicationManager::GetSelectedFigure() const {
 
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
-{	
+{
+	pOut->ClearDrawArea();
 	for(int i=0; i<FigCount; i++)
 		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 }

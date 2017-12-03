@@ -21,6 +21,7 @@ bool CRectangle::IsOnFig(int x, int y) const {
 }
 
 void CRectangle::PrintInfo(Output* pOut) const {
+	//Forming the printed message string then passing it to PrintMessage
 	string message = "Rectangle, ID: " + to_string(ID) + ", Corner 1: (" + to_string(Corner1.x) + "," + to_string(Corner1.y)
 		+ "), Corner 2: (" + to_string(Corner2.x) + "," + to_string(Corner2.y) + "), Length: "
 		+ to_string(abs(Corner1.x - Corner2.x)) + ", Width: " + to_string(abs(Corner1.y - Corner2.y));

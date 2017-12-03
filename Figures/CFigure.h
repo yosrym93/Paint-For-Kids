@@ -21,6 +21,7 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 	GfxInfo GetGfxInfo()const;	//returns info about the figure to play mode.
 	void SetID(int id);				//Sets ID to figure's index in FigList.
+	int GetID() const;
 
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
 	

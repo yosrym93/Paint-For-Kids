@@ -20,6 +20,7 @@ bool CCirc::IsOnFig(int x, int y) const
 }
 
 void CCirc::PrintInfo(Output* pOut) const {
+	//Forming the printed message string then passing it to PrintMessage
 	string message = "Circle, ID: " + to_string(ID) + ", Center (" + to_string(Center.x) + "," + to_string(Center.y)
 		+ "), Radius: " + to_string(int(sqrt((Center.x - Edge.x)*(Center.x - Edge.x) + (Center.y - Edge.y)*(Center.y - Edge.y))));
 	pOut->PrintMessage(message);
