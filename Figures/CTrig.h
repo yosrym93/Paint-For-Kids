@@ -12,4 +12,5 @@ public:
 	virtual bool IsOnFig(int, int) const;
 	float Area(int, int, int, int, int, int) const;
 	bool isOnLine(int, int, int, int, int, int) const;
+	virtual void PrintInfo(Output* pOut) const;
 };
