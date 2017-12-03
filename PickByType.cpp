@@ -1,9 +1,9 @@
 #include "PickByType.h"
 #include "ApplicationManager.h"
 #include "Figures\CRectangle.h"
-#include "CLine.h"
-#include "CCirc.h"
-#include "CTrig.h"
+#include "Figures\CLine.h"
+#include "Figures\CCirc.h"
+#include "Figures\CTrig.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
 
