@@ -11,7 +11,8 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
-	
+	bool PlayHidden;		//hides figures in playmode.
+
 	double CalcDistance(Point, Point) const; //utility function to measure the length between two points
 
 public:
@@ -22,6 +23,9 @@ public:
 	GfxInfo GetGfxInfo()const;	//returns info about the figure to play mode.
 	void SetID(int id);				//Sets ID to figure's index in FigList.
 	int GetID() const;				//Gets the ID of the figure
+	void Hide();					//Hides figures in playmode.
+	void Show();					//Shows figures in playmode.
+	bool HiddenStatus();			//Shows Current Figure status in playmode.
 
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
 	

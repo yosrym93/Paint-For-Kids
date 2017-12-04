@@ -186,6 +186,7 @@
     <ClCompile Include="CopyAction.cpp" />
     <ClCompile Include="PasteAction.cpp" />
     <ClCompile Include="CutAction.cpp" />
+    <ClCompile Include="ToDrawAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -314,6 +315,7 @@
     <ClInclude Include="CopyAction.h" />
     <ClInclude Include="PasteAction.h" />
     <ClInclude Include="CutAction.h" />
+    <ClInclude Include="ToDrawAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

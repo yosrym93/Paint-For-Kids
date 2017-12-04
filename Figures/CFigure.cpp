@@ -4,6 +4,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
+	PlayHidden = false;
 }
 
 //Sets the figure "selected" state
@@ -35,6 +36,22 @@ void CFigure::SetID(int id)
 int CFigure::GetID() const
 {
 	return ID;
+}
+
+//Hides Figures
+void CFigure::Hide()
+{
+	PlayHidden = true;
+}
+//Shows Figures
+void CFigure::Show()
+{
+	PlayHidden = false;
+}
+//Gives Current Status
+bool CFigure::HiddenStatus()
+{
+	return PlayHidden;
 }
 
 //Changes the figure's drawing color
