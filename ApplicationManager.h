@@ -42,6 +42,10 @@ public:
 	CFigure* DrawnFigs(int) const;					//Transfer figures in FigList to playmode
 	int getFigCount() const;
 	void RemoveFig(int); //Removes the deleted figure from the array and resorts;
+	void SetClipboard(CFigure*);
+	CFigure* GetClipboard() const;
+	
+		
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
