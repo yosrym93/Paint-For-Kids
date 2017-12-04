@@ -5,6 +5,9 @@
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
+#include <fstream>
+#include <iostream>
+
 
 //Main class that manages everything in the application.
 class ApplicationManager
@@ -33,7 +36,6 @@ public:
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
 	//Reads a color from the color toolbar 
 	bool GetColor(color&);
-	
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
@@ -41,10 +43,12 @@ public:
 	CFigure* GetSelectedFigure() const;
 	CFigure* DrawnFigs(int) const;					//Transfer figures in FigList to playmode
 	int getFigCount() const;
+	void ClearFigList();
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
+	void SaveAll(ofstream&OutFile);
 };
 
 #endif

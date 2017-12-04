@@ -1,5 +1,7 @@
 #include"CTrig.h"
 
+CTrig::CTrig() {}
+
 CTrig::CTrig(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo):CFigure (FigureGfxInfo)
 {
 	Corner1 = P1;
@@ -62,4 +64,37 @@ void CTrig::PrintInfo(Output* pOut) const {
 		+ "), Corner 2: (" + to_string(Corner2.x) + "," + to_string(Corner2.y) + "), Corner 3: (" + to_string(Corner3.x) 
 		+ "," + to_string(Corner3.y) + ")";
 	pOut->PrintMessage(message);
+}
+
+void CTrig::Save(ofstream &OutFile)
+{
+	string DrawClr = getColorName(FigGfxInfo.DrawClr);
+
+	OutFile << trig << '\t' << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t' << Corner2.x << '\t' << Corner2.y << '\t' << Corner3.x << '\t' << Corner3.y << '\t' << DrawClr << '\t';
+	if (FigGfxInfo.isFilled == true)
+	{
+		string FillClr = getColorName(FigGfxInfo.FillClr);
+		OutFile << FillClr << endl;
+	}
+	else {
+		OutFile << "NO_FILL" << endl;
+	}
+}
+void CTrig::Load(ifstream&InFile)
+{
+	string DrawClr;
+	string FillClr;
+	InFile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Corner3.x >> Corner3.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = getColorObject(DrawClr);
+	InFile >> FillClr;
+	if (FillClr == "NO_FILL")
+	{
+		FigGfxInfo.isFilled = false;
+	}
+	else {
+		FigGfxInfo.FillClr = getColorObject(FillClr);
+	}
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+
 }

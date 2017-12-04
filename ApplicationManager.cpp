@@ -1,17 +1,19 @@
-#pragma once
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
 #include "Actions\SelectAction.h"
-#include"Actions\AddLineAction.h"
-#include"Actions\AddCircAction.h"
-#include"Actions\AddTrigAction.h"
-#include"Actions\ChngDrawClrAction.h"
-#include"Actions\ChngFillClrAction.h"
-#include"Actions\ToPlayAction.h"
+#include "Actions\AddLineAction.h"
+#include "Actions\AddCircAction.h"
+#include "Actions\AddTrigAction.h"
+#include "SaveAction.h"
+//#include "CMUgraphicsLib\colors.cpp"
+#include "Actions\ChngDrawClrAction.h"
+#include "Actions\ChngFillClrAction.h"
+#include "Actions\ToPlayAction.h"
 #include "PickByColor.h"
 #include "PickByType.h"
 #include "PickByBoth.h"
-
+#include"LoadAction.h"
+#include"ExitAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -81,9 +83,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case EXIT:
-			///create ExitAction here
-			
+			pAct = new ExitAction(this);
 			break;
+
+		case SAVE:
+			pAct = new SaveAction(this);
+			break;
+		case LOAD:
+			pAct = new LoadAction(this);
+			break;
+
 		
 		case STATUS:	//a click on the status bar ==> no action
 			return;
@@ -189,8 +198,11 @@ CFigure* ApplicationManager::GetSelectedFigure() const {
 //Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {	
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i])
+			FigList[i]->Draw(pOut);
+	}	//Call Draw function (virtual member fn)
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
@@ -199,14 +211,32 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
+
+//save function 
+void ApplicationManager::SaveAll(ofstream&OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save(OutFile);
+	}
+}
+//clears the figlist to load from the begining
+void ApplicationManager::ClearFigList()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
-		delete FigList[i];
+	ClearFigList();
 	delete pIn;
 	delete pOut;
-	
 }
-

@@ -56,4 +56,12 @@ struct GfxInfo	//Graphical info of each figure (you may add more members)
 
 };
 
+enum shape
+{
+	line,
+	rect,
+	trig,
+	circ,
+};
+
 #endif

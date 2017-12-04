@@ -7,8 +7,12 @@ private:
 	Point Center;
 	Point Edge;
 public:
+	CCirc();
 	CCirc(Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsOnFig(int, int) const;
 	virtual void PrintInfo(Output* pOut) const;
+	virtual void Save(ofstream &OutFile);
+	virtual void Load(ifstream &Infile);
+	~CCirc();
 };
