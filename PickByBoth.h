@@ -6,8 +6,11 @@ class PickByBoth :
 
 {
 	CFigure* Fig;
-	int  no_combs, rand_fig_no, picked_comb_no;
+	Point P;
+	int  no_combs, rand_fig_no, picked_comb_no, rigSel, wrgSel;
 	int combinations[23];
+	void PrntScore(int);
+
 public:
 	PickByBoth(ApplicationManager*);
 	~PickByBoth();

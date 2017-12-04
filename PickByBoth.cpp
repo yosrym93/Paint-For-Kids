@@ -2,18 +2,40 @@
 #include "ApplicationManager.h"
 #include "Figures\CRectangle.h"
 #include "Figures\CLine.h"
-#include "Figures\CCirc.h"
 #include "Figures\CTrig.h"
+#include "Figures\CCirc.h"
 #include "GUI\input.h"
 #include "GUI\Output.h"
-#include <iostream>
-using namespace std;
 
 
 
-PickByBoth::PickByBoth(ApplicationManager* pApp):Action(pApp)
+void PickByBoth::PrntScore(int S)
+{
+	Output* pOut = pManager->GetOutput();
+
+	string message;
+	if (S == 1)
+	{
+		rigSel++;
+		message = "Right!, Your score is: " + to_string(rigSel) + " Right, and " + to_string(wrgSel) + " Wrong.";
+	}
+	else 	if (S == 2)
+	{
+		wrgSel++;
+		message = "Wrong!, Your score is: " + to_string(rigSel) + " Right, and " + to_string(wrgSel) + " Wrong.";
+	}
+	else
+		message = "YOU WIN!, Your score is: " + to_string(rigSel) + " Right, and " + to_string(wrgSel) + " Wrong.";
+	pOut->PrintMessage(message);
+
+
+}
+
+PickByBoth::PickByBoth(ApplicationManager* pApp) :Action(pApp)
 {
 	no_combs = 0;
+	wrgSel = 0;
+	rigSel = 0;
 	for (int i = 0;i < 23;i++)
 		combinations[i] = 0;
 }
@@ -36,7 +58,7 @@ void PickByBoth::ReadActionParameters()
 					combinations[0]++;
 				else if (dynamic_cast<CTrig*>(Fig))
 					combinations[1]++;
-				else 
+				else
 					combinations[2]++;
 			}
 			else if (Fig->GetGfxInfo().FillClr == WHITE)
@@ -45,7 +67,7 @@ void PickByBoth::ReadActionParameters()
 					combinations[3]++;
 				else if (dynamic_cast<CTrig*>(Fig))
 					combinations[4]++;
-				else 
+				else
 					combinations[5]++;
 			}
 			else if (Fig->GetGfxInfo().FillClr == BLUE)
@@ -54,7 +76,7 @@ void PickByBoth::ReadActionParameters()
 					combinations[6]++;
 				else if (dynamic_cast<CTrig*>(Fig))
 					combinations[7]++;
-				else 
+				else
 					combinations[8]++;
 			}
 			else if (Fig->GetGfxInfo().FillClr == GREEN)
@@ -63,7 +85,7 @@ void PickByBoth::ReadActionParameters()
 					combinations[9]++;
 				else if (dynamic_cast<CTrig*>(Fig))
 					combinations[10]++;
-				else 
+				else
 					combinations[11]++;
 			}
 			else
@@ -72,7 +94,7 @@ void PickByBoth::ReadActionParameters()
 					combinations[12]++;
 				else if (dynamic_cast<CTrig*>(Fig))
 					combinations[13]++;
-				else 
+				else
 					combinations[14]++;
 			}
 		}
@@ -100,7 +122,7 @@ void PickByBoth::ReadActionParameters()
 
 				else
 					combinations[22]++;
-				
+
 			}
 		}
 	}
@@ -121,6 +143,8 @@ void PickByBoth::Execute()
 
 	if (no_combs > 1)
 	{
+		//Figure to be hidden
+		CFigure* clickedFig;
 		//Randomize
 		rand_fig_no = rand() % pManager->getFigCount();
 		//Counting the the color instances.
@@ -283,7 +307,7 @@ void PickByBoth::Execute()
 					pOut->PrintMessage("Pick up green lines!");
 
 				}
-				else 
+				else
 				{
 					picked_comb_no = combinations[22];
 					pOut->PrintMessage("Pick up red lines!");
@@ -293,8 +317,62 @@ void PickByBoth::Execute()
 			}
 
 		}
+		while (picked_comb_no > 0)
+		{
+
+			pIn->GetPointClicked(P.x, P.y);
+			if (P.y > UI.ToolBarHeight || P.x > (UI.MenuItemWidth * PLAY_ITM_COUNT))
+			{
+				clickedFig = pManager->GetFigure(P.x, P.y);
+				if (clickedFig != NULL)
+				{
+
+					if (dynamic_cast<CLine*>(Fig) && dynamic_cast<CLine*>(clickedFig) && (clickedFig->GetGfxInfo().DrawClr == Fig->GetGfxInfo().DrawClr) && clickedFig->HiddenStatus() == false)
+					{
+						PrntScore(1);
+						clickedFig->Hide();
+						pManager->UpdateInterface();
+						picked_comb_no--;
+					}
+					else if (dynamic_cast<CRectangle*>(Fig) && dynamic_cast<CRectangle*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr) && clickedFig->HiddenStatus() == false)
+					{
+						PrntScore(1);
+						clickedFig->Hide();
+						pManager->UpdateInterface();
+						picked_comb_no--;
+					}
+					else if (dynamic_cast<CCirc*>(Fig) && dynamic_cast<CCirc*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr) && clickedFig->HiddenStatus() == false)
+					{
+						PrntScore(1);
+						clickedFig->Hide();
+						pManager->UpdateInterface();
+						picked_comb_no--;
+					}
+					else if (dynamic_cast<CTrig*>(Fig) && dynamic_cast<CTrig*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr) && clickedFig->HiddenStatus() == false)
+					{
+						PrntScore(1);
+						clickedFig->Hide();
+						pManager->UpdateInterface();
+						picked_comb_no--;
+					}
+					else if (clickedFig->HiddenStatus() == true);
+					else PrntScore(2);
+					;
+				}
+			}
+			else
+			{
+				pOut->PrintMessage("Toolbar clicked, game aborted.");
+				picked_comb_no = -1;
+			}
+		}
+
+		if (picked_comb_no == 0)
+			PrntScore(3);
 
 	}
 	else pOut->PrintMessage("You must have at least two or more combinations to play pick by both!");
-
+	for (int i = 0; i < pManager->getFigCount();i++)
+		pManager->DrawnFigs(i)->Show();
+	pManager->UpdateInterface();
 }

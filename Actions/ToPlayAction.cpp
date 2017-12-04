@@ -11,5 +11,5 @@ void ToPlayAction::Execute() {
 	Output* pOut = pManager->GetOutput();
 
 	pOut->CreatePlayToolBar();
-	pOut->PrintMessage("Switched to Play Mode ! Let's Play !");
+	pOut->PrintMessage("Switched to Play Mode! Let's Play!");
 }

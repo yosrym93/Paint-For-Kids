@@ -15,6 +15,7 @@
 #include "PasteAction.h"
 #include "CutAction.h"
 #include "CopyAction.h"
+#include "ToDrawAction.h"
 
 
 //Constructor
@@ -100,6 +101,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case EXIT:
 			///create ExitAction here
 			
+			break;
+
+			//PLAY MODE TOOLBAR ACTOPMS
+		case P_H_TYPE:
+			pAct = new PickByType(this);
+			break;
+
+		case P_H_COLOR:
+			pAct = new PickByColor(this);
+			break;
+
+		case P_H_BOTH:
+			pAct = new PickByBoth(this);
+			break;
+
+		case TO_DRAW:
+			pAct = new ToDrawAction(this);
 			break;
 		
 		case STATUS:	//a click on the status bar ==> no action
@@ -235,8 +253,11 @@ CFigure* ApplicationManager::GetClipboard() const
 void ApplicationManager::UpdateInterface() const
 {
 	pOut->ClearDrawArea();
-	for(int i=0; i<FigCount; i++)
-		FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->HiddenStatus() == false)
+			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
