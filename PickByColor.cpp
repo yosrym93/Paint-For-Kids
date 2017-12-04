@@ -79,7 +79,7 @@ void PickByColor::ReadActionParameters()
 
 	for (int i = 0; i < pManager->getFigCount();i++) {
 		Fig = pManager->DrawnFigs(i);
-		if (Fig->GetGfxInfo().isFilled) //counts color occurance.
+		if (Fig->GetGfxInfo().isFilled && !(dynamic_cast<CLine*>(Fig))) //counts color occurance.
 		{
 			if (Fig->GetGfxInfo().FillClr == BLACK)
 				clrs[0]++;
@@ -134,7 +134,7 @@ void PickByColor::Execute()
 		rand_fig_no = rand() % pManager->getFigCount();
 		//Counting the the color instances.
 		Fig = pManager->DrawnFigs(rand_fig_no);
-		if (Fig->GetGfxInfo().isFilled)
+		if (Fig->GetGfxInfo().isFilled && !(dynamic_cast<CLine*>(Fig)))
 		{
 			if (Fig->GetGfxInfo().FillClr == BLACK)
 			{
