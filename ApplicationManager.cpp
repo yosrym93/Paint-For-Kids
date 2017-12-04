@@ -14,6 +14,7 @@
 #include "PickByBoth.h"
 #include "PasteAction.h"
 #include "CutAction.h"
+#include "CopyAction.h"
 
 
 //Constructor
@@ -215,8 +216,9 @@ CFigure* ApplicationManager::GetSelectedFigure() const {
 ///////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::SetClipboard(CFigure* f)
 {
-	if (Clipboard != NULL)
+/*	if (Clipboard != NULL)
 		delete Clipboard;
+*/
 
 	Clipboard = f;
 }

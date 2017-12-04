@@ -34,14 +34,9 @@ void PasteAction::Execute()
 
 	ReadActionParameters();
 	if (figure != NULL)
-	{ 
+	{
 		pManager->AddFigure(figure);
+	}
 
 
-
-}
-
-
-PasteAction::~PasteAction()
-{
 }
