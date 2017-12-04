@@ -258,7 +258,6 @@ void ApplicationManager::UpdateInterface() const
 		if (FigList[i]->HiddenStatus() == false)
 			FigList[i]->Draw(pOut);		//Call Draw function (virtual member fn)
 	}
-	pOut->ClearStatusBar();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
