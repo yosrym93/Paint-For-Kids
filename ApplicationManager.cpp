@@ -12,6 +12,8 @@
 #include "PickByColor.h"
 #include "PickByType.h"
 #include "PickByBoth.h"
+#include "PasteAction.h"
+#include "CutAction.h"
 
 
 //Constructor
@@ -23,6 +25,7 @@ ApplicationManager::ApplicationManager()
 	
 	FigCount = 0;
 	SelectedFig = NULL;
+	Clipboard = NULL;
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
 		FigList[i] = NULL;	
@@ -73,16 +76,24 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new SelectAction(this);
 			break;
 
-		case COPY:
-			pAct = new PickByBoth(this);//this is a test
-			break;
-
 		case DEL:
 			pAct = new DeleteAction(this);
 			break;
 
 		case TO_PLAY:
 			pAct = new ToPlayAction(this);
+			break;
+
+		case COPY:
+			pAct = new CopyAction(this);
+			break;
+
+		case CUT:
+			pAct = new CutAction(this);
+			break;
+
+		case PASTE:
+			pAct = new PasteAction(this);
 			break;
 
 		case EXIT:
@@ -200,6 +211,19 @@ void ApplicationManager::SetSelectedFigure(CFigure* sf) {
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetSelectedFigure() const {
 	return SelectedFig;
+}
+///////////////////////////////////////////////////////////////////////////////////
+void ApplicationManager::SetClipboard(CFigure* f)
+{
+	if (Clipboard != NULL)
+		delete Clipboard;
+
+	Clipboard = f;
+}
+//////////////////////////////////////////////////////////////////////////////////
+CFigure* ApplicationManager::GetClipboard() const
+{
+	return Clipboard;
 }
 //==================================================================================//
 //							Interface Management Functions							//
