@@ -50,5 +50,9 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr; 
 }
 
+//Utility function to measure the length between two points
+double CFigure::CalcDistance(Point A, Point B) const {
+	return sqrt((A.x - B.x)*(A.x - B.x) + (A.y - B.y)*(A.y - B.y));
+}
 
 

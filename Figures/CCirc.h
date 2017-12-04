@@ -6,6 +6,7 @@ class CCirc :public CFigure
 private:
 	Point Center;
 	Point Edge;
+	double Radius;
 public:
 	CCirc(Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
