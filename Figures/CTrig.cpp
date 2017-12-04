@@ -33,9 +33,14 @@ bool CTrig::IsOnFig(int x, int y) const
 	float A3 = Area(x1, y1, x2, y2, x, y);
 
 	/* Check if sum of A1, A2 and A3 is same as A */
-	bool L1 = isOnLine(x1, y1, x2, y2, x, y);
-	bool L2 = isOnLine(x3, y3, x2, y2, x, y);
-	bool L3 = isOnLine(x1, y1, x3, y3, x, y);
+	//Creates a point P(x,y) to use in CalcDistance
+	Point P;
+	P.x = x;
+	P.y = y;
+
+	bool L1 = isOnBorder(Corner1, Corner2, P);
+	bool L2 = isOnBorder(Corner1, Corner3, P);
+	bool L3 = isOnBorder(Corner2, Corner3, P);
 	return (A == A1 + A2 + A3) || L1 || L2 || L3;
 }
 
@@ -49,12 +54,13 @@ float CTrig::Area(int x1, int y1, int x2, int y2, int x3, int y3) const
 
 // A utility function to check if Point (x,y) lies on the line between (x1,y1) and (x2,y2)
 
-bool CTrig::isOnLine(int x1, int y1, int x2, int y2, int x, int y) const {
-
-	double AB = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
-	double AP = sqrt((x - x1)*(x - x1) + (y - y1)*(y - y1));
-	double PB = sqrt((x2 - x)*(x2 - x) + (y2 - y)*(y2 - y));
-	return (AB - (AP + PB) <= 0.35 && AB - (AP + PB) >= -0.35);
+bool CTrig::isOnBorder(Point A, Point B, Point P) const {
+	//Calculate distances AB, AP, and PB, where A and B are the start and the end respectively
+	double AB = CalcDistance(A, B);
+	double AP = CalcDistance(A, P);
+	double PB = CalcDistance(B, P);
+	//P is on the line if AB = (AP+PB) , 0.35 is an error margin
+	return (abs(AB - (AP + PB)) <= 0.35);
 }
 
 void CTrig::PrintInfo(Output* pOut) const {

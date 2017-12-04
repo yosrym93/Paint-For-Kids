@@ -12,7 +12,7 @@ protected:
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
 	
-	/// Add more parameters if needed.
+	double CalcDistance(Point, Point) const; //utility function to measure the length between two points
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
@@ -21,7 +21,7 @@ public:
 	bool IsSelected() const;	//check whether fig is selected
 	GfxInfo GetGfxInfo()const;	//returns info about the figure to play mode.
 	void SetID(int id);				//Sets ID to figure's index in FigList.
-	int GetID() const;
+	int GetID() const;				//Gets the ID of the figure
 
 	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
 	
