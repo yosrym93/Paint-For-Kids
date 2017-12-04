@@ -218,8 +218,9 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 {
 
 	for (int i = FigCount - 1; i >= 0; i--) {
-		if (FigList[i]->IsOnFig(x, y))
-			return FigList[i];
+		if (FigList[i]->HiddenStatus() == false)
+			if (FigList[i]->IsOnFig(x, y))
+				return FigList[i];
 	}
 	return NULL;
 }
