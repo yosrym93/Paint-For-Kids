@@ -22,7 +22,7 @@ Output::Output()
 	UI.BkGrndColor = MILKYWHITE;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = TURQUOISE;
-	UI.PenWidth = 5;	//width of the figures frames
+	UI.PenWidth = 4;	//width of the figures frames
 	UI.isFilled = false;
 
 	
