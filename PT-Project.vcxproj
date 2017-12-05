@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>PT Project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -173,6 +173,7 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="ExitAction.cpp" />
     <ClCompile Include="Figures\CCirc.cpp" />
     <ClCompile Include="CopyAction.cpp" />
     <ClCompile Include="CutAction.cpp" />
@@ -183,12 +184,14 @@
     <ClCompile Include="Figures\CTrig.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
+    <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PickByBoth.cpp" />
     <ClCompile Include="PickByColor.cpp" />
     <ClCompile Include="PickByType.cpp" />
     <ClCompile Include="PasteAction.cpp" />
     <ClCompile Include="ToDrawAction.cpp" />
+    <ClCompile Include="SaveAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actions\AddCircAction.h" />
@@ -220,6 +223,7 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="ExitAction.h" />
     <ClInclude Include="Figures\CCirc.h" />
     <ClInclude Include="CopyAction.h" />
     <ClInclude Include="CutAction.h" />
@@ -234,10 +238,12 @@
     <ClInclude Include="GUI\UI_Info.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="PasteAction.h" />
+    <ClInclude Include="LoadAction.h" />
     <ClInclude Include="PickByBoth.h" />
     <ClInclude Include="PickByColor.h" />
     <ClInclude Include="PickByType.h" />
     <ClInclude Include="ToDrawAction.h" />
+    <ClInclude Include="SaveAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

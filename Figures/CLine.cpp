@@ -1,5 +1,9 @@
 #include "CLine.h"
 
+CLine::CLine()
+{
+}
+
 
 CLine::CLine(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -34,4 +38,20 @@ void CLine::PrintInfo(Output* pOut) const {
 		+ "), Corner 2: (" + to_string(end.x) + "," + to_string(end.y) + "), Length: "
 		+ to_string(int(CalcDistance(start,end)));
 	pOut->PrintMessage(message);
+}
+
+void CLine::Save(ofstream &OutFile)
+{
+	string DrawClr = getColorName(FigGfxInfo.DrawClr);
+	OutFile << line << '\t' << ID << '\t' << start.x << '\t' << start.y << '\t' << end.x << '\t' << end.y << '\t' << DrawClr << '\t' << endl;
+}
+void CLine::Load(ifstream &InFile)
+{
+	string DrawClr;
+	InFile >> ID >> start.x >> start.y >> end.x >> end.y;
+	InFile >> DrawClr;
+	FigGfxInfo.DrawClr = getColorObject(DrawClr);
+	//FigGfxInfo.isFilled = false;
+	FigGfxInfo.BorderWdth = UI.PenWidth;
+
 }

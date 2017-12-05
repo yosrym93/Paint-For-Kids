@@ -1,5 +1,9 @@
 #include "CFigure.h"
 
+CFigure::CFigure()
+{
+	Selected = false;
+}
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
@@ -71,5 +75,63 @@ void CFigure::ChngFillClr(color Fclr)
 double CFigure::CalcDistance(Point A, Point B) const {
 	return sqrt((A.x - B.x)*(A.x - B.x) + (A.y - B.y)*(A.y - B.y));
 }
+string CFigure::getColorName(color name)const
+{
 
+	if (name == RED)
+	{
+		return "RED";
+	}
 
+	if (name == BLACK)
+	{
+		return "BLACK";
+	}
+
+	if (name == BLUE)
+	{
+		return "BLUE";
+	}
+
+	if (name == GREEN)
+	{
+		return "GREEN";
+	}
+
+	if (name == WHITE)
+	{
+		return "WHITE";
+	}
+}
+
+color CFigure::getColorObject(string name)const
+{
+	if (name == "RED")
+	{
+		return RED;
+	}
+
+	if (name == "BLACK")
+	{
+		return BLACK;
+	}
+
+	if (name == "BLUE")
+	{
+		return BLUE;
+	}
+
+	if (name == "GREEN")
+	{
+		return GREEN;
+	}
+
+	if (name == "WHITE")
+	{
+		return WHITE;
+	}
+
+}
+CFigure::~CFigure()
+{
+}

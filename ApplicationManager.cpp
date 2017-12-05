@@ -1,4 +1,3 @@
-#pragma once
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
 #include "Actions\SelectAction.h"
@@ -16,7 +15,8 @@
 #include "CutAction.h"
 #include "CopyAction.h"
 #include "ToDrawAction.h"
-
+#include"LoadAction.h"
+#include"ExitAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -99,8 +99,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			break;
 
 		case EXIT:
-			///create ExitAction here
-			
+			pAct = new ExitAction(this);
 			break;
 
 			//PLAY MODE TOOLBAR ACTOPMS
@@ -119,6 +118,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case TO_DRAW:
 			pAct = new ToDrawAction(this);
 			break;
+
+		case SAVE:
+			pAct = new SaveAction(this);
+			break;
+		case LOAD:
+			pAct = new LoadAction(this);
+			break;
+
 		
 		case STATUS:	//a click on the status bar ==> no action
 			return;
@@ -266,14 +273,32 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
+
+
+//save function 
+void ApplicationManager::SaveAll(ofstream&OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save(OutFile);
+	}
+}
+//clears the figlist to load from the begining
+void ApplicationManager::ClearFigList()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
-		delete FigList[i];
+	ClearFigList();
 	delete pIn;
 	delete pOut;
-	
 }
-

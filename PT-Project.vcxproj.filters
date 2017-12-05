@@ -187,6 +187,15 @@
     <ClCompile Include="PasteAction.cpp" />
     <ClCompile Include="CutAction.cpp" />
     <ClCompile Include="ToDrawAction.cpp" />
+    <ClCompile Include="LoadAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -316,6 +325,15 @@
     <ClInclude Include="PasteAction.h" />
     <ClInclude Include="CutAction.h" />
     <ClInclude Include="ToDrawAction.h" />
+    <ClInclude Include="LoadAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
