@@ -15,6 +15,7 @@
 #include "CutAction.h"
 #include "CopyAction.h"
 #include "ToDrawAction.h"
+#include "SaveAction.h"
 #include"LoadAction.h"
 #include"ExitAction.h"
 

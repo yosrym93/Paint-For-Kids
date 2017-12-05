@@ -3,6 +3,7 @@
 CFigure::CFigure()
 {
 	Selected = false;
+	PlayHidden = false;
 }
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 { 

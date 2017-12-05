@@ -1,6 +1,7 @@
 #include "CCirc.h"
 
-CCirc::CCirc() {}
+CCirc::CCirc() {
+}
 
 CCirc::CCirc(Point P1, Point P2, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -59,6 +60,7 @@ void CCirc::Load(ifstream&InFile)
 		FigGfxInfo.FillClr = getColorObject(FillClr);
 	}
 	FigGfxInfo.BorderWdth = UI.PenWidth;
+	Radius = CalcDistance(Center, Edge);
 }
 CCirc::~CCirc()
 {
