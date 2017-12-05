@@ -22,7 +22,7 @@ void DeleteAction::Execute() {
 
 	//Check if a figure is selected
 	if (SelectedFig == NULL) 
-		pOut->PrintMessage("No figure selected, Please select a figure first");
+		pOut->PrintMessage("Cut figure : Select a figure first");
 	else {
 		//Delete the selected figure
 		delete SelectedFig;

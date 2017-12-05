@@ -16,13 +16,13 @@ Output::Output()
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 72;
 	
-	UI.DrawColor = BLUE;	//Drawing color
-	UI.FillColor = GREEN;	//Filling color
-	UI.MsgColor = RED;		//Messages color
+	UI.DrawColor = BLACK;	//Drawing color
+	UI.FillColor = RED;	//Filling color
+	UI.MsgColor = WHITE;		//Messages color
 	UI.BkGrndColor = MILKYWHITE;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
-	UI.StatusBarColor = TURQUOISE;
-	UI.PenWidth = 4;	//width of the figures frames
+	UI.StatusBarColor = RED;
+	UI.PenWidth = 3;	//width of the figures frames
 	UI.isFilled = false;
 
 	
@@ -184,8 +184,8 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 	ClearStatusBar();	//First clear the status bar
 	
 	pWind->SetPen(UI.MsgColor, 50);
-	pWind->SetFont(20, BOLD , BY_NAME, "Arial");   
-	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.5), msg);
+	pWind->SetFont(20, BOLD , BY_NAME, "Verdana");   
+	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.1), msg);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

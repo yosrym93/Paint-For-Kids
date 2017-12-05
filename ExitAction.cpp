@@ -26,5 +26,5 @@ void ExitAction::ReadActionParameters()
 void ExitAction::Execute()
 {
 	ReadActionParameters();
-	//pManager->SetClipboard(NULL);
+	pManager->SetClipboard(NULL);
 }
