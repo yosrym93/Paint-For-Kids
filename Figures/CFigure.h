@@ -34,6 +34,8 @@ public:
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 	virtual bool IsOnFig(int, int) const = 0;  //Checks if a given point is on the figure
+	Point GetHighestPoint(Point A, Point B);
+	Point GetHighestPoint(Point A, Point B, Point C);
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 
@@ -45,6 +47,8 @@ public:
 	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
 	virtual void PrintInfo(Output* pOut) const = 0;	//print all figure info on the status bar
+	virtual CFigure* copy() = 0;
+	virtual CFigure* paste(Point) = 0;
 	virtual ~CFigure();
 };
 

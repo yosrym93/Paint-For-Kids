@@ -24,7 +24,13 @@ void CutAction::Execute()
 {
 	ReadActionParameters();
 	if (selectedFigure != NULL)
+	{
+		selectedFigure->SetSelected(false);
+		pManager->SetSelectedFigure(NULL);
 		pManager->SetClipboard(selectedFigure);
+		pManager->RemoveFig(selectedFigure->GetID());
+		
+	}
 }
 
 

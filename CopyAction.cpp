@@ -2,6 +2,7 @@
 #include"ApplicationManager.h"
 #include "GUI\Input.h"
 #include "GUI\Input.h"
+#include "PasteAction.h"
 
 
 
@@ -24,8 +25,14 @@ void CopyAction::Execute()
 {
 	ReadActionParameters();
 	if (selectedFigure != NULL)
-		pManager->SetClipboard(selectedFigure);
+	{
 
+		newSelectedFigure = selectedFigure->copy();
+		newSelectedFigure->SetSelected(false);
+		pManager->SetClipboard(newSelectedFigure);
+		
+
+	}
 	
 }
 

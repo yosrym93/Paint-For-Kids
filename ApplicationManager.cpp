@@ -29,6 +29,7 @@ ApplicationManager::ApplicationManager()
 	FigCount = 0;
 	SelectedFig = NULL;
 	Clipboard = NULL;
+	isCopied = false;
 	//Create an array of figure pointers and set them to NULL		
 	for(int i=0; i<MaxFigCount; i++)
 		FigList[i] = NULL;	
@@ -234,6 +235,7 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 }
 ////////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::SetSelectedFigure(CFigure* sf) {
+
 	SelectedFig = sf;
 }
 ////////////////////////////////////////////////////////////////////////////////////
@@ -243,16 +245,24 @@ CFigure* ApplicationManager::GetSelectedFigure() const {
 ///////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::SetClipboard(CFigure* f)
 {
-/*	if (Clipboard != NULL)
+	if (!IsCopied() && Clipboard != NULL) 
 		delete Clipboard;
-*/
 
 	Clipboard = f;
+	setCopied(false);
 }
 //////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetClipboard() const
 {
 	return Clipboard;
+}
+void ApplicationManager::setCopied(bool C)
+{
+	isCopied = C;
+}
+bool ApplicationManager::IsCopied()
+{
+	return isCopied;
 }
 //==================================================================================//
 //							Interface Management Functions							//
@@ -295,6 +305,8 @@ void ApplicationManager::ClearFigList()
 	}
 	FigCount = 0;
 }
+
+////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor

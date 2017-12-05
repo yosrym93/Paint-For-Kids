@@ -11,10 +11,14 @@ class PasteAction :
 private:
 	CFigure * figure;
 	Point P;
+
+
 public:
 	PasteAction(ApplicationManager*pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
+
+
 };
 #endif
 

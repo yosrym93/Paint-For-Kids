@@ -16,4 +16,6 @@ public:
 	virtual void PrintInfo(Output* pOut) const;
 	virtual void Save(ofstream &OutFile);
 	virtual void Load(ifstream &Infile);
+	virtual CFigure* copy();
+	virtual CFigure* paste(Point);
 };

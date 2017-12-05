@@ -13,6 +13,8 @@ public:
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsOnFig(int, int) const;
 	virtual void PrintInfo(Output* pOut) const;
+	virtual CFigure* copy();
+	virtual CFigure* paste(Point);
 	virtual void Save(ofstream &OutFile);
 	virtual void Load(ifstream &Infile);
 	~CCirc();

@@ -105,3 +105,42 @@ void CTrig::Load(ifstream&InFile)
 	FigGfxInfo.BorderWdth = UI.PenWidth;
 
 }
+CFigure* CTrig::copy()
+{
+	return new CTrig(*this);
+	//CFigure*f=new CTrig;
+	//*f = *this;
+	//return f;
+}
+CFigure* CTrig::paste(Point P)
+{
+	if (Corner1 == GetHighestPoint(Corner1, Corner2, Corner3)) {
+		int transX = P.x - Corner1.x;
+		int transY = P.y - Corner1.y;
+		Corner1 = P;
+		Corner2.x += transX;
+		Corner3.x += transX;
+		Corner2.y += transY;
+		Corner3.y += transY;
+	}
+	else if (Corner2 == GetHighestPoint(Corner1, Corner2, Corner3)) {
+		int transX = P.x - Corner2.x;
+		int transY = P.y - Corner2.y;
+		Corner2 = P;
+		Corner1.x += transX;
+		Corner3.x += transX;
+		Corner1.y += transY;
+		Corner3.y += transY;
+	}
+	else {
+		int transX = P.x - Corner3.x;
+		int transY = P.y - Corner3.y;
+		Corner3 = P;
+		Corner1.x += transX;
+		Corner2.x += transX;
+		Corner1.y += transY;
+		Corner2.y += transY;
+	}
+
+	return this;
+}
