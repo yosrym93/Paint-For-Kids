@@ -8,7 +8,7 @@
 PasteAction::PasteAction(ApplicationManager* pApp):Action(pApp)
 {
 }
-void PasteAction ::ReadActionParameters()
+void PasteAction::ReadActionParameters()
 {
 	figure = pManager->GetClipboard();
 
@@ -17,26 +17,32 @@ void PasteAction ::ReadActionParameters()
 	Input* pIn = pManager->GetInput();
 
 	if (figure != NULL)
+	{
+		//Read clicked point and store in P
 		pOut->PrintMessage("Paste figure : Click any where");
-
+		pIn->GetDrawPoint(P.x, P.y, pOut);
+	}
 	if (figure == NULL)
 		pOut->PrintMessage("Paste figure : Clipboard is empty, copy or cut a figure first");
-
-	//Read clicked point and store in P
-	pIn->GetPointClicked(P.x, P.y);
-
 }
 void PasteAction::Execute()
 {
 
-	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
+
 
 	ReadActionParameters();
+
 	if (figure != NULL)
 	{
-		pManager->AddFigure(figure);
+		
+		if (pManager->IsCopied())
+			figure = pManager->GetClipboard()->copy();
+		else
+			figure = pManager->GetClipboard();
+		pManager->AddFigure(figure->paste(P));
+		pManager->setCopied(true);
 	}
 
 
 }
+

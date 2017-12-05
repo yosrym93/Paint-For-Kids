@@ -55,4 +55,18 @@ double CFigure::CalcDistance(Point A, Point B) const {
 	return sqrt((A.x - B.x)*(A.x - B.x) + (A.y - B.y)*(A.y - B.y));
 }
 
+Point CFigure::GetHighestPoint(Point A, Point B) {
+	if (A.y < B.y)
+		return A;
+	return B;
+}
+
+Point CFigure::GetHighestPoint(Point A, Point B, Point C) {
+	if (A.y < B.y && A.y < C.y)
+		return A;
+	if (B.y < C.y)
+		return B;
+	return C;
+}
+
 

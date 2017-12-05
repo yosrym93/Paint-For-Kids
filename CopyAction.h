@@ -9,6 +9,7 @@ class CopyAction :
 {
 private:
 	CFigure* selectedFigure;
+	CFigure* newSelectedFigure;
 public:
 	CopyAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

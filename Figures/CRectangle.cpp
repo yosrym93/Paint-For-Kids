@@ -27,3 +27,28 @@ void CRectangle::PrintInfo(Output* pOut) const {
 		+ to_string(abs(Corner1.x - Corner2.x)) + ", Width: " + to_string(abs(Corner1.y - Corner2.y));
 	pOut->PrintMessage(message);
 }
+CFigure* CRectangle::copy()
+{
+	return new CRectangle(*this);
+	//CFigure*f;
+	//f=this;
+	//return f;
+}
+CFigure* CRectangle::paste(Point P)
+{
+	if (Corner1 == GetHighestPoint(Corner1, Corner2)) {
+		int transX = P.x - Corner1.x;
+		int transY = P.y - Corner1.y;
+		Corner1 = P;
+		Corner2.x += transX;
+		Corner2.y += transY;
+	}
+	else {
+		int transX = P.x - Corner2.x;
+		int transY = P.y - Corner2.y;
+		Corner2 = P;
+		Corner1.x += transX;
+		Corner1.y += transY;
+	}
+	return this;
+}

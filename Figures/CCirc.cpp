@@ -29,3 +29,17 @@ void CCirc::PrintInfo(Output* pOut) const {
 		+ "), Radius: " + to_string(int(Radius));
 	pOut->PrintMessage(message);
 }
+CFigure* CCirc::copy()
+{
+	return new CCirc(*this);
+}
+CFigure* CCirc::paste(Point P)
+{
+	if(P.y - UI.ToolBarHeight < Radius)
+		P.y += Radius;
+	Center = P;
+	Edge.x = P.x;
+	Edge.y = P.y + Radius;
+	
+	return this;
+}

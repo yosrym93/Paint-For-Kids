@@ -45,7 +45,14 @@ enum ActionType //The actions supported (you can add more if needed)
 };
 
 struct Point	//To be used for figures points
-{ int x,y; };
+{ int x,y; 
+//Operator == for Points
+bool operator== (Point A) {
+	return ((x == A.x) && (y == A.y));
+}
+};
+
+
 
 struct GfxInfo	//Graphical info of each figure (you may add more members)
 {

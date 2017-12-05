@@ -35,3 +35,30 @@ void CLine::PrintInfo(Output* pOut) const {
 		+ to_string(int(CalcDistance(start,end)));
 	pOut->PrintMessage(message);
 }
+CFigure* CLine::copy()
+{
+	return new CLine(*this);
+	/*CFigure*f;
+	f = this;
+	return f;*/
+
+}
+CFigure* CLine::paste(Point P)
+{
+	if (start == GetHighestPoint(start, end)) {
+		int transX = P.x - start.x;
+		int transY = P.y - start.y;
+		start = P;
+		end.x += transX;
+		end.y += transY;
+	}
+	else {
+		int transX = P.x - end.x;
+		int transY = P.y - end.y;
+		end = P;
+		start.x += transX;
+		start.y += transY;
+	}
+
+	return this;
+}

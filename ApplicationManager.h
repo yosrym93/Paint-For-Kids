@@ -14,7 +14,7 @@ class ApplicationManager
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-
+	bool isCopied;
 	CFigure* SelectedFig; //Pointer to the selected figure
 	CFigure* Clipboard;   //Pointer to the copied/cut figure
 	
@@ -44,7 +44,8 @@ public:
 	void RemoveFig(int); //Removes the deleted figure from the array and resorts;
 	void SetClipboard(CFigure*);
 	CFigure* GetClipboard() const;
-	
+	void setCopied(bool);
+	bool IsCopied();
 		
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
