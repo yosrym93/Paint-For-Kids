@@ -18,10 +18,10 @@ Output::Output()
 	
 	UI.DrawColor = BLACK;	//Drawing color
 	UI.FillColor = RED;	//Filling color
-	UI.MsgColor = WHITE;		//Messages color
+	UI.MsgColor = BLACK;		//Messages color
 	UI.BkGrndColor = MILKYWHITE;	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
-	UI.StatusBarColor = RED;
+	UI.StatusBarColor = YOSRYBLUE;
 	UI.PenWidth = 3;	//width of the figures frames
 	UI.isFilled = false;
 
@@ -106,7 +106,7 @@ void Output::CreateDrawToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 5);
+	pWind->SetPen(YOSRYBLUE, 5);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
 
 }
@@ -136,7 +136,7 @@ void Output::CreatePlayToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 5);
+	pWind->SetPen(YOSRYBLUE, 5);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 
@@ -165,7 +165,7 @@ void Output::CreateColorToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 5);
+	pWind->SetPen(YOSRYBLUE, 5);
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -184,8 +184,8 @@ void Output::PrintMessage(string msg) const	//Prints a message on status bar
 	ClearStatusBar();	//First clear the status bar
 	
 	pWind->SetPen(UI.MsgColor, 50);
-	pWind->SetFont(20, BOLD , BY_NAME, "Verdana");   
-	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.1), msg);
+	pWind->SetFont(21, ITALICIZED, BY_NAME, "Verdana");
+	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.2), msg);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 

@@ -181,6 +181,6 @@ const color DARKCYAN = color(0, 139, 139);
 const color DARKMAGENTA = color(139, 0, 139);
 const color DARKRED = color(139, 0, 0);
 const color LIGHTGREEN = color(144, 238, 144);
-
+const color YOSRYBLUE = color(161, 189, 255);
 
 #endif //COLOR_H
