@@ -16,6 +16,12 @@ void ChngDrawClrAction::ReadActionParameters() {
 	//Initialise local SelectedFigs and selectedCount 
 	SelectedFigs = pManager->GetSelectedFigures();
 	selectedCount = pManager->GetSelectedCount();
+
+	//Sets IsSelectedFig
+	if (SelectedFigs[0] == NULL)
+		IsSelectedFig = false;
+	else
+		IsSelectedFig = true;
 	
 	//Prints a custom message depending on whether a figure is selected
 	string message;

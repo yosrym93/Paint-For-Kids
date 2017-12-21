@@ -26,7 +26,7 @@ void SaveAction::ReadActionParameters()
 		pOut->PrintMessage("Your file has been Successfully Saved");
 	}
 	else {
-		pOut->PrintMessage("Save Action: No file with this name ");
+		pOut->PrintMessage("Unable to save file");
 	}
 }
 

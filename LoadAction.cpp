@@ -32,9 +32,9 @@ void LoadAction::ReadActionParameters()
 	//check if the file doesnot exists
 	if (InputFile.is_open())
 	{
-		pOut->PrintMessage("Load Action: Your file has been successfully loaded");
+		pOut->PrintMessage("Your file has been successfully loaded");
 	}
-	else { pOut->PrintMessage("Load Action: No file found with name: " + fileName); }
+	else { pOut->PrintMessage("No file found with name: " + fileName); }
 }
 
 //Execute action Load Action
