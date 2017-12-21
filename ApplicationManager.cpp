@@ -27,12 +27,16 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
-	SelectedFig = NULL;
+
 	Clipboard = NULL;
 	isCopied = false;
-	//Create an array of figure pointers and set them to NULL		
-	for(int i=0; i<MaxFigCount; i++)
-		FigList[i] = NULL;	
+	//Create an array of figure pointers and set them to NULL
+	//and intialise SelectedFigs array to NULL
+	for (int i = 0; i < MaxFigCount; i++) {
+		FigList[i] = NULL;
+		SelectedFigs[i] = NULL;
+	}
+	selectedCount = 0;
 }
 
 //==================================================================================//
@@ -185,6 +189,11 @@ bool ApplicationManager::GetColor(color &inputColor) {
 //						Figures Management Functions								//
 //==================================================================================//
 
+//Returns the number of selected figures
+int ApplicationManager::GetSelectedCount() const{
+	return selectedCount;
+}
+
 //Transfer figures in FigList to playmode
 CFigure * ApplicationManager::DrawnFigs(int i) const
 {
@@ -234,13 +243,26 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	return NULL;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::SetSelectedFigure(CFigure* sf) {
+void ApplicationManager::AddSelectedFigure(CFigure* sf) {
 
-	SelectedFig = sf;
+	SelectedFigs[selectedCount] = sf;
+	selectedCount++;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-CFigure* ApplicationManager::GetSelectedFigure() const {
-	return SelectedFig;
+void ApplicationManager::RemoveSelectedFigure(CFigure* sf) {
+
+	for (int i = 0; i < selectedCount; i++) {
+		if (SelectedFigs[i] == sf) {
+			SelectedFigs[i] = SelectedFigs[selectedCount - 1];
+			SelectedFigs[selectedCount - 1] = NULL;
+			selectedCount--;
+			return;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////
+CFigure* const* ApplicationManager::GetSelectedFigures() const {
+	return SelectedFigs;
 }
 ///////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::SetClipboard(CFigure* f)

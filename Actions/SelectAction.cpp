@@ -1,6 +1,5 @@
 #include "SelectAction.h"
 
-#include "..\ApplicationManager.h"
 
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
@@ -36,16 +35,15 @@ void SelectAction::Execute()
 	if (SelectedFig != NULL) {
 		if (SelectedFig->IsSelected())
 			Unselect();
-		else if (pManager->GetSelectedFigure() == NULL) {
+		else
 			Select();
-		}
 	}
 }
 
 //Selected an unselected figure
 void SelectAction::Select() { 
 	SelectedFig->SetSelected(true);
-	pManager->SetSelectedFigure(SelectedFig); //Set the ApplicationManager SelectedFig pointer
+	pManager->AddSelectedFigure(SelectedFig); //Add the figure to ApplicationManager's SelectedFigs array
 	Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
 	SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar
 }
@@ -53,6 +51,5 @@ void SelectAction::Select() {
 //Unselect a selected figure
 void SelectAction::Unselect() {
 	SelectedFig->SetSelected(false);
-	SelectedFig = NULL;
-	pManager->SetSelectedFigure(SelectedFig);	//Resets the ApplicationManager pointer (NULL indicates no figure selected)
+	pManager->RemoveSelectedFigure(SelectedFig);	//Removes the figure from ApplicationManager's SelectedFigs array
 }

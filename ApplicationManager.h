@@ -1,6 +1,6 @@
 #ifndef APPLICATION_MANAGER_H
 #define APPLICATION_MANAGER_H
-
+#define MaxFigCount 200 //Max no. of figs
 #include "DEFS.h"
 #include "Figures\CFigure.h"
 #include "GUI\input.h"
@@ -12,14 +12,15 @@
 //Main class that manages everything in the application.
 class ApplicationManager
 {
-	enum { MaxFigCount = 200 };	//Max no of figures
 
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
 	bool isCopied;
-	CFigure* SelectedFig; //Pointer to the selected figure
+	CFigure* SelectedFigs[MaxFigCount]; //array of pointers to the selected figures
 	CFigure* Clipboard;   //Pointer to the copied/cut figure
+
+	int selectedCount; //Number of selected figures
 	
 
 	//Pointers to Input and Output classes
@@ -37,13 +38,15 @@ public:
 	//Reads a color from the color toolbar 
 	bool GetColor(color&);
 	// -- Figures Management Functions
+	int GetSelectedCount() const;
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-	void SetSelectedFigure(CFigure*);
-	CFigure* GetSelectedFigure() const;
+	void AddSelectedFigure(CFigure*);	//Adds a figure to the SelectedFigs array
+	void RemoveSelectedFigure(CFigure*); //Removes a figure from the SelectedFigs array
+	CFigure* const* GetSelectedFigures() const;		//Returns a pointer to the SelectedFigs array
 	CFigure* DrawnFigs(int) const;					//Transfer figures in FigList to playmode
 	int getFigCount() const;
-	void RemoveFig(int); //Removes the deleted figure from the array and resorts;
+	void RemoveFig(int); //Removes the deleted figure from the array and resorts
 	void SetClipboard(CFigure*);
 	CFigure* GetClipboard() const;
 	void ClearFigList();

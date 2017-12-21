@@ -4,6 +4,8 @@
 class ChngDrawClrAction : public Action {
 	ActionType inputColorAction;
 	color DrawClr;
+	int selectedCount; //number of selected figures
+	CFigure* const* SelectedFigs; //pointer to selected figures
 	//If a figure is selected
 	bool IsSelectedFig;
 	//If a color was picked in the color toolbar

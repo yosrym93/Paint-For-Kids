@@ -4,7 +4,9 @@
 
 class DeleteAction : public Action {
 	int DeletedID;
-	CFigure* SelectedFig;
+	int selectedCount;
+	CFigure* const* SelectedFigs;
+	CFigure* DeletedFig;
 public:
 	DeleteAction(ApplicationManager *pApp);
 

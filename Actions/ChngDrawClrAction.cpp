@@ -6,18 +6,16 @@
 #include "..\GUI\Output.h"
 
 ChngDrawClrAction::ChngDrawClrAction(ApplicationManager *pApp) :Action(pApp)
-{
-	//Sets IsSelectedFig
-	if (pManager->GetSelectedFigure() == NULL)
-		IsSelectedFig = false;
-	else
-		IsSelectedFig = true;
-}
+{}
 
 void ChngDrawClrAction::ReadActionParameters() {
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
+
+	//Initialise local SelectedFigs and selectedCount 
+	SelectedFigs = pManager->GetSelectedFigures();
+	selectedCount = pManager->GetSelectedCount();
 	
 	//Prints a custom message depending on whether a figure is selected
 	string message;
@@ -54,7 +52,8 @@ void ChngDrawClrAction::Execute() {
 
 		//Changes selected figure draw color
 		else {
-			pManager->GetSelectedFigure()->ChngDrawClr(DrawClr);
+			for (int i = 0; i < selectedCount; i++)
+				SelectedFigs[i]->ChngDrawClr(DrawClr);
 		}
 	}
 }
