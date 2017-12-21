@@ -24,10 +24,7 @@ void DeleteAction::Execute() {
 		pOut->PrintMessage("Delete figure : Select a figure first");
 	else {
 		for (int i = 0; i < selectedCount; i++) {
-
-			//Store the deleted figure in a different pointer as it will be removed from SelectedFigs array
 			//RemoveSelectedFigure resorts the array so the required figure to delete will always be the first one
-
 			DeletedFig = SelectedFigs[0];
 
 			//Removes the deleted figure from the SelectedFigs array
@@ -39,10 +36,9 @@ void DeleteAction::Execute() {
 			//Delete the selected figure
 			delete DeletedFig;
 
-			//Remove the figure from the FigList
+			//Remove the figure from the FigList by ID
 			pManager->RemoveFig(DeletedID);
 		}
 		pOut->PrintMessage("Figure(s) Deleted");
 	}
-
 }

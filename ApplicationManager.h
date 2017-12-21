@@ -14,13 +14,13 @@ class ApplicationManager
 {
 
 private:
-	int FigCount;		//Actual number of figures
-	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
-	bool isCopied;
+	int FigCount;						//Actual number of figures
+	CFigure* FigList[MaxFigCount];		//List of all figures (Array of pointers)
+	bool isCopied;						//a flag if what's in the clipboard have been pasted before
 	CFigure* SelectedFigs[MaxFigCount]; //array of pointers to the selected figures
-	CFigure* Clipboard;   //Pointer to the copied/cut figure
+	CFigure* Clipboard;					//Pointer to the copied/cut figure
 
-	int selectedCount; //Number of selected figures
+	int selectedCount;					//Number of selected figures
 	
 
 	//Pointers to Input and Output classes
@@ -31,32 +31,44 @@ public:
 	ApplicationManager(); 
 	~ApplicationManager();
 	
-	// -- Action-Related Functions
-	//Reads the input command from the user and returns the corresponding action type
-	ActionType GetUserAction() const;
-	void ExecuteAction(ActionType) ; //Creates an action and executes it
-	//Reads a color from the color toolbar 
-	bool GetColor(color&);
-	// -- Figures Management Functions
-	int GetSelectedCount() const;
+	// -- Action-Related Functions -- //
+	
+	ActionType GetUserAction() const;  //Reads the input command from the user and returns the corresponding action type
+	void ExecuteAction(ActionType) ;   //Creates an action and executes it 
+	bool GetColor(color&);			   //Reads a color from the color toolbar
+
+	// -- Figures Management Functions -- // 
+
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
+	int getFigCount() const;				//Returns number of figures
 	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-	void AddSelectedFigure(CFigure*);	//Adds a figure to the SelectedFigs array
-	void RemoveSelectedFigure(CFigure*); //Removes a figure from the SelectedFigs array
+	CFigure* DrawnFigs(int) const;			//Transfer figures in FigList to playmode
+	void RemoveFig(int);					//Removes the deleted figure from the array and resorts
+	void ClearFigList();					//Deletes all figures and nullifies the FigList
+
+	// -- Select Functions -- //
+
+	int GetSelectedCount() const;					//Returns the number of selected figures
+	void AddSelectedFigure(CFigure*);				//Adds a figure to the SelectedFigs array
+	void RemoveSelectedFigure(CFigure*);			//Removes a figure from the SelectedFigs array
 	CFigure* const* GetSelectedFigures() const;		//Returns a pointer to the SelectedFigs array
-	CFigure* DrawnFigs(int) const;					//Transfer figures in FigList to playmode
-	int getFigCount() const;
-	void RemoveFig(int); //Removes the deleted figure from the array and resorts
-	void SetClipboard(CFigure*);
+	
+	// -- Copy/Cut/Paste Functions -- //
+	
+	void SetClipboard(CFigure*); 
 	CFigure* GetClipboard() const;
-	void ClearFigList();
 	void setCopied(bool);
 	bool IsCopied();
+
+	// -- Save/Load Functions -- //
+	
+	void SaveAll(ofstream&OutFile);				//Saves all figures
+
 	// -- Interface Management Functions
-	Input *GetInput() const; //Return pointer to the input
-	Output *GetOutput() const; //Return pointer to the output
+	Input *GetInput() const;		//Return pointer to the input
+	Output *GetOutput() const;		//Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
-	void SaveAll(ofstream&OutFile);
+	
 };
 
 #endif

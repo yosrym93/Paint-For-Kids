@@ -34,6 +34,7 @@ void ChngFillClrAction::ReadActionParameters() {
 	pOut->PrintMessage(message);
 
 	//Sets IsColor and DrawClr
+	//GetColor returns true if a color is clicked, false otherwise
 	if (!pManager->GetColor(FillClr))
 		IsColor = false;
 	else
@@ -50,7 +51,7 @@ void ChngFillClrAction::Execute() {
 	//Reads the input draw color
 	ReadActionParameters();
 
-	//Executes only if a figure is selected
+	//Executes only if a color is selected
 	if (IsColor) {
 		//Changes current draw color if no figure is selected
 		if (!IsSelectedFig) {
@@ -58,7 +59,7 @@ void ChngFillClrAction::Execute() {
 			pOut->setCrntFillColor(FillClr);
 		}
 
-		//Changes selected figure draw color
+		//Changes selected figure(s) draw color
 		else {
 			for (int i = 0; i < selectedCount; i++)
 				SelectedFigs[i]->ChngFillClr(FillClr);

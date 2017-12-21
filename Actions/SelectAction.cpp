@@ -42,7 +42,7 @@ void SelectAction::Execute()
 
 //Selected an unselected figure
 void SelectAction::Select() { 
-	SelectedFig->SetSelected(true);
+	SelectedFig->SetSelected(true); //Sets the figure as "selected"
 	pManager->AddSelectedFigure(SelectedFig); //Add the figure to ApplicationManager's SelectedFigs array
 	Output* pOut = pManager->GetOutput(); //Get a Pointer to the Output Interface
 	SelectedFig->PrintInfo(pOut); //Print the selected figure info on the status bar
@@ -50,6 +50,6 @@ void SelectAction::Select() {
 
 //Unselect a selected figure
 void SelectAction::Unselect() {
-	SelectedFig->SetSelected(false);
+	SelectedFig->SetSelected(false); //Sets the figure as "unselected"
 	pManager->RemoveSelectedFigure(SelectedFig);	//Removes the figure from ApplicationManager's SelectedFigs array
 }
