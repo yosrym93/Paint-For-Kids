@@ -24,7 +24,7 @@ void AddLineAction::ReadActionParameters()
 	pIn->GetDrawPoint(P2.x, P2.y, pOut);
 
 	LineGfxInfo.isFilled = pOut->getIsFilled();	//default is not filled
-									//get drawing, filling colors and pen width from the interface
+	//get drawing, filling colors and pen width from the interface
 	LineGfxInfo.DrawClr = pOut->getCrntDrawColor();
 	LineGfxInfo.FillClr = pOut->getCrntFillColor();
 	LineGfxInfo.BorderWdth = pOut->getCrntPenWidth(); 
