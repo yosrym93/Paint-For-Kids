@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectName>PT Project</ProjectName>
     <ProjectGuid>{1AC3DDD7-FDDE-487E-A2A4-52A8FCF7BDB9}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -138,6 +138,7 @@
     <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="Actions\ToPlayAction.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="BringToForward.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -190,6 +191,7 @@
     <ClCompile Include="PickByColor.cpp" />
     <ClCompile Include="PickByType.cpp" />
     <ClCompile Include="PasteAction.cpp" />
+    <ClCompile Include="SendToBack.cpp" />
     <ClCompile Include="ToDrawAction.cpp" />
     <ClCompile Include="SaveAction.cpp" />
   </ItemGroup>
@@ -203,6 +205,7 @@
     <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="Actions\ToPlayAction.h" />
     <ClInclude Include="ApplicationManager.h" />
+    <ClInclude Include="BringToForward.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -243,6 +246,7 @@
     <ClInclude Include="PickByColor.h" />
     <ClInclude Include="PickByType.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SendToBack.h" />
     <ClInclude Include="ToDrawAction.h" />
     <ClInclude Include="SaveAction.h" />
   </ItemGroup>
