@@ -332,7 +332,12 @@ bool ApplicationManager::IsCopied()
 {
 	return isCopied;
 }
-//function that sort the shapes accroding to the action (Bring To Forward)
+
+//==================================================================================//
+//				  Send to back/ Bring to forward Functions							//
+//==================================================================================//
+
+//Sorts the shapes accroding to the action (Bring To Forward)
 void ApplicationManager::SortBTF(int index)
 {
 	//checking if the index sent is not the first shape 
@@ -351,7 +356,8 @@ void ApplicationManager::SortBTF(int index)
 		FigList[i]->SetID(i);
 	}
 }
-//function that sort the shapes accroding to the action (Send To Back)
+//////////////////////////////////////////////////////////////////////////////////
+//Sorts the shapes accroding to the action (Send To Back)
 void ApplicationManager::SortSTB(int index)
 {
 	//checking if the element sent is not the last shape 
@@ -374,9 +380,10 @@ void ApplicationManager::SortSTB(int index)
 //							Save/Load Functions										//
 //==================================================================================//
 
-//Saves all figures
+//Saves all figures in the FigList
 void ApplicationManager::SaveAll(ofstream&OutFile)
 {
+	//Loop on each figure ,then saving it 
 	for (int i = 0; i < FigCount; i++)
 	{
 		FigList[i]->Save(OutFile);
@@ -405,26 +412,6 @@ Input *ApplicationManager::GetInput() const
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
 
-
-//save function that save all the figures in the figlist
-void ApplicationManager::SaveAll(ofstream&OutFile)
-{
-	//Loop on each figure ,then saving it 
-	for (int i = 0; i < FigCount; i++)
-	{
-		FigList[i]->Save(OutFile);
-	}
-}
-//clears the figlist to load from the begining
-void ApplicationManager::ClearFigList()
-{
-	for (int i = 0; i < FigCount; i++)
-	{
-		delete FigList[i];
-		FigList[i] = NULL;
-	}
-	FigCount = 0;
-}
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor

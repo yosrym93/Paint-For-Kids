@@ -12,10 +12,10 @@ SendToBack::SendToBack(ApplicationManager *pApp) :Action(pApp)
 void SendToBack::ReadActionParameters()
 {
 	//a pointer to the selected Fig.
-	SelectedFig = pManager->GetSelectedFigure();
+	SelectedFig = pManager->GetSelectedFigures()[0];
 	//if there is a figure selected store its id
 	if (SelectedFig != NULL)
-		SelectedID = pManager->GetSelectedFigure()->GetID();
+		SelectedID = pManager->GetSelectedFigures()[0]->GetID();
 }
 //excute the STB action
 void SendToBack::Execute()
@@ -27,7 +27,7 @@ void SendToBack::Execute()
 	if (SelectedFig)
 	{
 		pManager->SortSTB(SelectedID);
-		pOut->PrintMessage("Figure (S) Shifted");
+		pOut->PrintMessage("Figure Shifted");
 	}
 	//else printing select a figure first
 	else

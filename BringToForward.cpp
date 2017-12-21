@@ -13,10 +13,10 @@ BringToForward::BringToForward(ApplicationManager *pApp) :Action(pApp)
 void BringToForward::ReadActionParameters()
 {
 	//a pointer to the selected Fig.
-	SelectedFig = pManager->GetSelectedFigure();
+	SelectedFig = pManager->GetSelectedFigures()[0];
 	//if there is a figure selected store its id
 	if (SelectedFig != NULL)
-		SelectedID = pManager->GetSelectedFigure()->GetID();
+		SelectedID = pManager->GetSelectedFigures()[0]->GetID();
 }
 //excute BTF action
 void BringToForward::Execute()
@@ -28,7 +28,7 @@ void BringToForward::Execute()
 	if (SelectedFig)
 	{
 		pManager->SortBTF(SelectedID);
-		pOut->PrintMessage("Figure (S) Shifted ");
+		pOut->PrintMessage("Figure Shifted ");
 	}
 	// else printing select a figure first
 	else

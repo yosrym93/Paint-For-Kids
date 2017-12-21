@@ -64,9 +64,13 @@ public:
 	
 	void SaveAll(ofstream&OutFile);				//Saves all figures
 
+	// -- BTF/STB Functions -- //
+
 	void SortBTF(int);
 	void SortSTB(int);
-	// -- Interface Management Functions
+
+	// -- Interface Management Functions -- //
+
 	Input *GetInput() const;		//Return pointer to the input
 	Output *GetOutput() const;		//Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
