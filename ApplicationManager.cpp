@@ -254,6 +254,11 @@ void ApplicationManager::ClearFigList()
 		delete FigList[i];
 		FigList[i] = NULL;
 	}
+	for (int i = 0; i < selectedCount; i++)
+	{
+		SelectedFigs[i] = NULL;
+	}
+	selectedCount = 0;
 	FigCount = 0;
 }
 
