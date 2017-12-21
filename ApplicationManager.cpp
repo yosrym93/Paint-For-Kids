@@ -27,17 +27,23 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
-	SelectedFig = NULL;
+
 	Clipboard = NULL;
 	isCopied = false;
-	//Create an array of figure pointers and set them to NULL		
-	for(int i=0; i<MaxFigCount; i++)
-		FigList[i] = NULL;	
+	//Create an array of figure pointers and set them to NULL
+	//and intialise SelectedFigs array to NULL
+	for (int i = 0; i < MaxFigCount; i++) {
+		FigList[i] = NULL;
+		SelectedFigs[i] = NULL;
+	}
+	//initialise selectedCount to 0
+	selectedCount = 0;
 }
 
 //==================================================================================//
 //								Actions Related Functions							//
 //==================================================================================//
+//Reads the input command from the user and returns the corresponding action type
 ActionType ApplicationManager::GetUserAction() const
 {
 	//Ask the input to get the action from the user.
@@ -104,7 +110,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new ExitAction(this);
 			break;
 
-			//PLAY MODE TOOLBAR ACTOPMS
+			//PLAY MODE TOOLBAR ACTIONS
 		case P_H_TYPE:
 			pAct = new PickByType(this);
 			break;
@@ -142,6 +148,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////////
+//Reads a color from the color toolbar
 bool ApplicationManager::GetColor(color &inputColor) {
 	
 	bool isColor = true;
@@ -181,15 +189,19 @@ bool ApplicationManager::GetColor(color &inputColor) {
 
 	return isColor;
 }
+////////////////////////////////////////////////////////////////////////////////////
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
+
 
 //Transfer figures in FigList to playmode
 CFigure * ApplicationManager::DrawnFigs(int i) const
 {
 	return FigList[i];
 }
+////////////////////////////////////////////////////////////////////////////////////
 //Transfer FigCount to playmode to avoid unnessecary loops
 int ApplicationManager::getFigCount() const
 {
@@ -234,18 +246,58 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	return NULL;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::SetSelectedFigure(CFigure* sf) {
+//Deletes all figures and nullifies the FigList (used with load)
+void ApplicationManager::ClearFigList()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
+}
 
-	SelectedFig = sf;
+//==================================================================================//
+//							Select Functions										//
+//==================================================================================//
+
+//Returns the number of selected figures
+int ApplicationManager::GetSelectedCount() const {
+	return selectedCount;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-CFigure* ApplicationManager::GetSelectedFigure() const {
-	return SelectedFig;
+//Returns a pointer to SelectedFigs array
+CFigure* const* ApplicationManager::GetSelectedFigures() const {
+	return SelectedFigs;
 }
 ///////////////////////////////////////////////////////////////////////////////////
+//Adds a figure to the SelectedFigs array
+void ApplicationManager::AddSelectedFigure(CFigure* sf) {
+
+	SelectedFigs[selectedCount] = sf;
+	selectedCount++;
+}
+////////////////////////////////////////////////////////////////////////////////////
+//Removes a figure from the SelectedFigs array
+void ApplicationManager::RemoveSelectedFigure(CFigure* sf) {
+
+	for (int i = 0; i < selectedCount; i++) {
+		if (SelectedFigs[i] == sf) {
+			SelectedFigs[i] = SelectedFigs[selectedCount - 1];
+			SelectedFigs[selectedCount - 1] = NULL;
+			selectedCount--;
+			return;
+		}
+	}
+}
+
+//==================================================================================//
+//							Copy/Cut/Paste Functions								//
+//==================================================================================//
+
 void ApplicationManager::SetClipboard(CFigure* f)
 {
-	if (!IsCopied() && Clipboard != NULL) 
+	if (!IsCopied() && Clipboard != NULL)
 		delete Clipboard;
 
 	Clipboard = f;
@@ -256,14 +308,30 @@ CFigure* ApplicationManager::GetClipboard() const
 {
 	return Clipboard;
 }
+//////////////////////////////////////////////////////////////////////////////////
 void ApplicationManager::setCopied(bool C)
 {
 	isCopied = C;
 }
+//////////////////////////////////////////////////////////////////////////////////
 bool ApplicationManager::IsCopied()
 {
 	return isCopied;
 }
+
+//==================================================================================//
+//							Save/Load Functions										//
+//==================================================================================//
+
+//Saves all figures
+void ApplicationManager::SaveAll(ofstream&OutFile)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		FigList[i]->Save(OutFile);
+	}
+}
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -285,28 +353,6 @@ Input *ApplicationManager::GetInput() const
 //Return a pointer to the output
 Output *ApplicationManager::GetOutput() const
 {	return pOut; }
-
-
-//save function 
-void ApplicationManager::SaveAll(ofstream&OutFile)
-{
-	for (int i = 0; i < FigCount; i++)
-	{
-		FigList[i]->Save(OutFile);
-	}
-}
-//clears the figlist to load from the begining
-void ApplicationManager::ClearFigList()
-{
-	for (int i = 0; i < FigCount; i++)
-	{
-		delete FigList[i];
-		FigList[i] = NULL;
-	}
-	FigCount = 0;
-}
-
-////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor

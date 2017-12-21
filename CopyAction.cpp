@@ -11,7 +11,7 @@ CopyAction::CopyAction(ApplicationManager* pApp):Action(pApp),selectedFigure(NUL
 }
 void CopyAction::ReadActionParameters()
 {
-	selectedFigure = pManager->GetSelectedFigure();
+	//selectedFigure = pManager->GetSelectedFigure();
 	Output* pOut = pManager->GetOutput();
 
 

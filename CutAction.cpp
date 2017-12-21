@@ -10,7 +10,7 @@ CutAction::CutAction(ApplicationManager*pApp):Action(pApp) , selectedFigure(NULL
 }
 void CutAction::ReadActionParameters()
 {
-	selectedFigure = pManager->GetSelectedFigure();
+	//selectedFigure = pManager->GetSelectedFigure();
 	Output* pOut = pManager->GetOutput();
 
 
@@ -26,7 +26,7 @@ void CutAction::Execute()
 	if (selectedFigure != NULL)
 	{
 		selectedFigure->SetSelected(false);
-		pManager->SetSelectedFigure(NULL);
+		//pManager->SetSelectedFigure(NULL);
 		pManager->SetClipboard(selectedFigure);
 		pManager->RemoveFig(selectedFigure->GetID());
 		

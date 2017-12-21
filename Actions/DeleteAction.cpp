@@ -8,10 +8,9 @@ DeleteAction::DeleteAction(ApplicationManager *pApp) :Action(pApp)
 {}
 
 void DeleteAction::ReadActionParameters() {
-	//Get a pointer to the selected figure and its ID
-	SelectedFig = pManager->GetSelectedFigure();
-	if (SelectedFig != NULL) 
-		DeletedID = pManager->GetSelectedFigure()->GetID();
+	//Initialise local SelectedFigs and selectedCount 
+	SelectedFigs = pManager->GetSelectedFigures();
+	selectedCount = pManager->GetSelectedCount();
 }
 
 void DeleteAction::Execute() {
@@ -21,15 +20,25 @@ void DeleteAction::Execute() {
 	ReadActionParameters();
 
 	//Check if a figure is selected
-	if (SelectedFig == NULL) 
+	if (SelectedFigs[0] == NULL) 
 		pOut->PrintMessage("Delete figure : Select a figure first");
 	else {
-		//Delete the selected figure
-		delete SelectedFig;
-		pManager->SetSelectedFigure(NULL);
-		//Rearrange the FigList and the IDs
-		pManager->RemoveFig(DeletedID);
+		for (int i = 0; i < selectedCount; i++) {
+			//RemoveSelectedFigure resorts the array so the required figure to delete will always be the first one
+			DeletedFig = SelectedFigs[0];
 
+			//Removes the deleted figure from the SelectedFigs array
+			pManager->RemoveSelectedFigure(SelectedFigs[0]);
+
+			//Gets the deleted figure ID
+			DeletedID = DeletedFig->GetID();
+
+			//Delete the selected figure
+			delete DeletedFig;
+
+			//Remove the figure from the FigList by ID
+			pManager->RemoveFig(DeletedID);
+		}
 		pOut->PrintMessage("Figure(s) Deleted");
 	}
 }

@@ -1,6 +1,7 @@
 #ifndef ACTION_H
 #define ACTION_H
 
+#include "..\ApplicationManager.h"
 #include "..\DefS.h"
 
 class ApplicationManager; //forward class declaration

@@ -6,8 +6,8 @@
 
 class SelectAction : public Action {
 private:
-	Point P;
-	CFigure* SelectedFig;
+	Point P;  //Clicked point
+	CFigure* SelectedFig; //Clicked figure (NULL if no figure is clicked)
 public:
 	SelectAction(ApplicationManager *pApp);
 
