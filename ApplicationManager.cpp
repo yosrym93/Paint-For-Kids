@@ -18,7 +18,8 @@
 #include "SaveAction.h"
 #include"LoadAction.h"
 #include"ExitAction.h"
-
+#include"BringToForward.h"
+#include"SendToBack.h"
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -98,6 +99,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case PASTE:
 			pAct = new PasteAction(this);
+			break;
+
+		case STB:
+			pAct = new SendToBack(this);
+			break;
+
+		case BTF:
+			pAct = new BringToForward(this);
 			break;
 
 		case EXIT:
@@ -264,6 +273,44 @@ bool ApplicationManager::IsCopied()
 {
 	return isCopied;
 }
+//function that sort the shapes accroding to the action (Bring To Forward)
+void ApplicationManager::SortBTF(int index)
+{
+	//checking if the index sent is not the first shape 
+	if (index != FigCount-1)
+	{
+		// putting the shape in temp
+		CFigure* temp = FigList[index];
+		int i;
+		//Loops on all figures ,starting at the index of the Selected One, shifitng them 1 element  and setting their ID
+		for (i = index; i < FigCount - 1; i++)
+		{
+			FigList[i] = FigList[i + 1];
+			FigList[i]->SetID(i);
+		}
+		FigList[i] = temp;
+		FigList[i]->SetID(i);
+	}
+}
+//function that sort the shapes accroding to the action (Send To Back)
+void ApplicationManager::SortSTB(int index)
+{
+	//checking if the element sent is not the last shape 
+	if (index !=0)
+	{
+		//putting the shape in temp
+		CFigure* temp = FigList[index];
+		int i;
+		//Loops on all figures ,starting at the index of the Selected One, shifting them back 1 element and setting their ID
+		for (i = index; i>0; i--)
+		{
+			FigList[i] = FigList[i - 1];
+			FigList[i]->SetID(i);
+		}
+		FigList[i] = temp;
+		FigList[i]->SetID(i);
+	}
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -287,9 +334,10 @@ Output *ApplicationManager::GetOutput() const
 {	return pOut; }
 
 
-//save function 
+//save function that save all the figures in the figlist
 void ApplicationManager::SaveAll(ofstream&OutFile)
 {
+	//Loop on each figure ,then saving it 
 	for (int i = 0; i < FigCount; i++)
 	{
 		FigList[i]->Save(OutFile);

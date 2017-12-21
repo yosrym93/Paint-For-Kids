@@ -49,6 +49,8 @@ public:
 	void ClearFigList();
 	void setCopied(bool);
 	bool IsCopied();
+	void SortBTF(int);
+	void SortSTB(int);
 	// -- Interface Management Functions
 	Input *GetInput() const; //Return pointer to the input
 	Output *GetOutput() const; //Return pointer to the output
