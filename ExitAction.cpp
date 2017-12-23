@@ -16,4 +16,5 @@ void ExitAction::ReadActionParameters()
 void ExitAction::Execute()
 {
 	//ems7 el clipboard ya jimmy :)
+	ReadActionParameters();
 }

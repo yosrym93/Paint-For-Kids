@@ -8,8 +8,9 @@ class CopyAction :
 	public Action
 {
 private:
-	CFigure* selectedFigure;
-	CFigure* newSelectedFigure;
+	int selectedCount;
+	CFigure* const* SelectedFigs;
+	CFigure* newSelectedFigures[MaxFigCount];
 public:
 	CopyAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

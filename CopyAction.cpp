@@ -6,32 +6,36 @@
 
 
 
-CopyAction::CopyAction(ApplicationManager* pApp):Action(pApp),selectedFigure(NULL)
+CopyAction::CopyAction(ApplicationManager* pApp):Action(pApp)
 {
+	for (int i = 0; i < MaxFigCount; i++) 
+		newSelectedFigures[i] = NULL;
 }
 void CopyAction::ReadActionParameters()
 {
-	//selectedFigure = pManager->GetSelectedFigure();
+	
 	Output* pOut = pManager->GetOutput();
+	SelectedFigs = pManager->GetSelectedFigures();
+	selectedCount = pManager->GetSelectedCount();
 
-
-	if (selectedFigure != NULL)
-		pOut->PrintMessage("Copy figure : Selected figure copied into clipboard");
+	if (SelectedFigs[0] != NULL)
+		pOut->PrintMessage("Copy figure : Selected figures copied into clipboard");
 		
-	if (selectedFigure == NULL)
+	if (SelectedFigs[0] == NULL)
 		pOut->PrintMessage("Copy figure : Select a figure first");
 }
 void CopyAction::Execute()
 {
 	ReadActionParameters();
-	if (selectedFigure != NULL)
+	if (SelectedFigs[0] != NULL)
 	{
-
-		newSelectedFigure = selectedFigure->copy();
-		newSelectedFigure->SetSelected(false);
-		pManager->SetClipboard(newSelectedFigure);
-		
-
+		for (int i = 0; i < selectedCount;i++)
+		{
+			newSelectedFigures[i] = SelectedFigs[i]->copy();
+			newSelectedFigures[i]->SetSelected(false);
+			
+		}
+		pManager->SetClipboard(newSelectedFigures);
 	}
 	
 }

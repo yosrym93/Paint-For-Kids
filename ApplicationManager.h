@@ -16,12 +16,11 @@ class ApplicationManager
 private:
 	int FigCount;						//Actual number of figures
 	CFigure* FigList[MaxFigCount];		//List of all figures (Array of pointers)
-	bool isCopied;						//a flag if what's in the clipboard have been pasted before
 	CFigure* SelectedFigs[MaxFigCount]; //array of pointers to the selected figures
-	CFigure* Clipboard;					//Pointer to the copied/cut figure
+	CFigure* Clipboard[MaxFigCount];					//Pointer to the copied/cut figure
 
 	int selectedCount;					//Number of selected figures
-	
+	int clipboardCount;					//Number of figures in clipboard
 
 	//Pointers to Input and Output classes
 	Input *pIn;
@@ -52,13 +51,17 @@ public:
 	void AddSelectedFigure(CFigure*);				//Adds a figure to the SelectedFigs array
 	void RemoveSelectedFigure(CFigure*);			//Removes a figure from the SelectedFigs array
 	CFigure* const* GetSelectedFigures() const;		//Returns a pointer to the SelectedFigs array
+	void ClearSelectedFigs();                       //Cleares the SelectedFig array
 	
 	// -- Copy/Cut/Paste Functions -- //
-	
-	void SetClipboard(CFigure*); 
-	CFigure* GetClipboard() const;
-	void setCopied(bool);
-	bool IsCopied();
+
+	void setClipboardCount(int);			//Sets no of figs currently in clipboard
+	int getClipboardCount();				
+	void SetClipboard(CFigure**);	
+	void SetClipboard(CFigure*const* );
+	CFigure*const* GetClipboard()const;
+	void clearClipboard();
+
 
 	// -- Save/Load Functions -- //
 	
