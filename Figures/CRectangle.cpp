@@ -33,27 +33,19 @@ void CRectangle::PrintInfo(Output* pOut) const {
 CFigure* CRectangle::copy()
 {
 	return new CRectangle(*this);
-	//CFigure*f;
-	//f=this;
-	//return f;
+
 }
-CFigure* CRectangle::paste(Point P)
+CFigure* CRectangle::paste(int transX, int transY)
 {
-	if (Corner1 == GetHighestPoint(Corner1, Corner2)) {
-		int transX = P.x - Corner1.x;
-		int transY = P.y - Corner1.y;
-		Corner1 = P;
-		Corner2.x += transX;
-		Corner2.y += transY;
-	}
-	else {
-		int transX = P.x - Corner2.x;
-		int transY = P.y - Corner2.y;
-		Corner2 = P;
-		Corner1.x += transX;
-		Corner1.y += transY;
-	}
-	return this;
+	Corner1.x += transX;
+	Corner1.y += transY;
+	Corner2.x += transX;
+	Corner2.y += transY;
+	return new CRectangle (*this);
+}
+Point CRectangle::highestPoint()
+{
+	return GetHighestPoint(Corner1,Corner2);
 }
 //Save function for Rectangle ,Read all the parameters 
 void CRectangle::Save(ofstream &OutFile)

@@ -9,8 +9,10 @@ class PasteAction :
 	public Action
 {
 private:
-	CFigure * figure;
-	Point P;
+	CFigure*const* toBePasted;
+	Point P,Pp;
+	int clipboardCount;
+	int transX, transY;
 
 
 public:

@@ -24,21 +24,16 @@ void DeleteAction::Execute() {
 		pOut->PrintMessage("Delete figure : Select a figure first");
 	else {
 		for (int i = 0; i < selectedCount; i++) {
-			//RemoveSelectedFigure resorts the array so the required figure to delete will always be the first one
-			DeletedFig = SelectedFigs[0];
-
-			//Removes the deleted figure from the SelectedFigs array
-			pManager->RemoveSelectedFigure(SelectedFigs[0]);
-
 			//Gets the deleted figure ID
-			DeletedID = DeletedFig->GetID();
-
-			//Delete the selected figure
-			delete DeletedFig;
+			DeletedID = SelectedFigs[i]->GetID();
 
 			//Remove the figure from the FigList by ID
 			pManager->RemoveFig(DeletedID);
+
+			//Delete the selected figure
+			delete SelectedFigs[i];
 		}
+		pManager->ClearSelectedFigs();
 		pOut->PrintMessage("Figure(s) Deleted");
 	}
 }
