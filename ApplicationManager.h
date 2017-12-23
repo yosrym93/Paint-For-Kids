@@ -66,8 +66,8 @@ public:
 
 	// -- BTF/STB Functions -- //
 
-	void SortBTF(int);
-	void SortSTB(int);
+	void SortBTF(int);			//Brings a figure to the front then resorts the FigList
+	void SortSTB(int);			//Sends a figure to the back then resorts the FigList
 
 	// -- Interface Management Functions -- //
 
