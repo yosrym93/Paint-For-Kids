@@ -39,7 +39,6 @@ void AddTrigAction::ReadActionParameters()
 	TrigGfxInfo.BorderWdth = pOut->getCrntPenWidth();
 	pOut->ClearStatusBar();
 
-
 }
 
 

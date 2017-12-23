@@ -17,7 +17,7 @@ private:
 	int FigCount;						//Actual number of figures
 	CFigure* FigList[MaxFigCount];		//List of all figures (Array of pointers)
 	CFigure* SelectedFigs[MaxFigCount]; //array of pointers to the selected figures
-	CFigure* Clipboard[MaxFigCount];					//Pointer to the copied/cut figure
+	CFigure* Clipboard[MaxFigCount];	//Pointer to the copied/cut figure
 
 	int selectedCount;					//Number of selected figures
 	int clipboardCount;					//Number of figures in clipboard
@@ -55,12 +55,12 @@ public:
 	
 	// -- Copy/Cut/Paste Functions -- //
 
-	void setClipboardCount(int);			//Sets no of figs currently in clipboard
-	int getClipboardCount();				
-	void SetClipboard(CFigure**);	
-	void SetClipboard(CFigure*const* );
-	CFigure*const* GetClipboard()const;
-	void clearClipboard();
+	void setClipboardCount(int);			//Sets no of figs currently in the clipboard
+	int getClipboardCount();				//Gets the number of figs currently in the clipboard
+	void SetClipboard(CFigure**);			//Sets the clipboard array
+	void SetClipboard(CFigure*const* );		//Sets the clipboard array (overloaded)
+	CFigure*const* GetClipboard()const;		//Gets the array of figs in the clipboard
+	void clearClipboard();					//Clears the clipboard array
 
 
 	// -- Save/Load Functions -- //

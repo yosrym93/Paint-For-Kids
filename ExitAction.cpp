@@ -15,6 +15,5 @@ void ExitAction::ReadActionParameters()
 //Execute action (Exit action)
 void ExitAction::Execute()
 {
-	//ems7 el clipboard ya jimmy :)
-	ReadActionParameters();
+	pManager->clearClipboard();
 }

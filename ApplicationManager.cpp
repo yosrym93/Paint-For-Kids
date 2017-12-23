@@ -20,6 +20,8 @@
 #include"ExitAction.h"
 #include"BringToForward.h"
 #include"SendToBack.h"
+
+
 //Constructor
 ApplicationManager::ApplicationManager()
 {
@@ -58,6 +60,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+		//Figures' Drawing Actions//
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			break;
@@ -73,7 +76,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_TRIG:
 			pAct = new AddTrigAction(this);
 			break;
-			
+		
+		//Color Change Actions//
 		case CHNG_DRAW_CLR:
 			pAct = new ChngDrawClrAction(this);
 			break;
@@ -82,18 +86,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new ChngFillClrAction(this);
 			break;
 
+		//Select Action//
 		case SELECT:
 			pAct = new SelectAction(this);
 			break;
 
+		//Delete Action//
 		case DEL:
 			pAct = new DeleteAction(this);
 			break;
 
-		case TO_PLAY:
-			pAct = new ToPlayAction(this);
-			break;
-
+		//Copy, Cut and Paste Actions//
 		case COPY:
 			pAct = new CopyAction(this);
 			break;
@@ -106,6 +109,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PasteAction(this);
 			break;
 
+		//Send To Back/ Bring To Front Actions//
 		case STB:
 			pAct = new SendToBack(this);
 			break;
@@ -114,11 +118,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToForward(this);
 			break;
 
-		case EXIT:
-			pAct = new ExitAction(this);
-			break;
-
-			//PLAY MODE TOOLBAR ACTIONS
+		//Play Mode Actions//
 		case P_H_TYPE:
 			pAct = new PickByType(this);
 			break;
@@ -131,18 +131,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new PickByBoth(this);
 			break;
 
-		case TO_DRAW:
-			pAct = new ToDrawAction(this);
-			break;
-
+		//Save and Load Actions//
 		case SAVE:
 			pAct = new SaveAction(this);
 			break;
+
 		case LOAD:
 			pAct = new LoadAction(this);
 			break;
 
-		
+		// Other Actions //
+		case TO_PLAY:
+			pAct = new ToPlayAction(this);
+			break;
+
+		case TO_DRAW:
+			pAct = new ToDrawAction(this);
+			break;
+
+		case EXIT:
+			pAct = new ExitAction(this);
+			break;
+
 		case STATUS:	//a click on the status bar ==> no action
 			return;
 	}
@@ -313,15 +323,19 @@ void ApplicationManager::ClearSelectedFigs() {
 //==================================================================================//
 //							Copy/Cut/Paste Functions								//
 //==================================================================================//
+//Sets no of figs currently in the clipboard
 void ApplicationManager::setClipboardCount(int c)
 {
 	clipboardCount = c;
 }
+//////////////////////////////////////////////////////////////////////////////////
+//Gets the number of figs currently in the clipboard
 int ApplicationManager::getClipboardCount()
 {
 	return clipboardCount;
 }
 //////////////////////////////////////////////////////////////////////////////////
+//Sets the clipboard array
 void ApplicationManager::SetClipboard(CFigure** f)
 {
 	clearClipboard();
@@ -329,6 +343,8 @@ void ApplicationManager::SetClipboard(CFigure** f)
 	Clipboard[i] = f[i];
 	setClipboardCount(selectedCount);
 }
+//////////////////////////////////////////////////////////////////////////////////
+//Sets the clipboard array (overloaded)
 void ApplicationManager::SetClipboard(CFigure*const* f)
 {
 	clearClipboard();
@@ -337,12 +353,14 @@ void ApplicationManager::SetClipboard(CFigure*const* f)
 	setClipboardCount(selectedCount);
 }
 //////////////////////////////////////////////////////////////////////////////////
+//Gets the array of figs in the clipboard
 CFigure*const* ApplicationManager::GetClipboard() const
 {
 	return Clipboard;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
+//Clears the clipboard array
 void ApplicationManager::clearClipboard()
 {
 	if ( Clipboard != NULL)
