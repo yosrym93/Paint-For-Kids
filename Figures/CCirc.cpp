@@ -31,10 +31,13 @@ void CCirc::PrintInfo(Output* pOut) const {
 		+ "), Radius: " + to_string(int(Radius));
 	pOut->PrintMessage(message);
 }
+//Save function for circle ,Read all the parameters 
 void CCirc::Save(ofstream &OutFile)
 {
+	//saving the parameters with a specific format
 	string DrawClr = getColorName(FigGfxInfo.DrawClr);
 	OutFile << circ << '\t' << ID << '\t' << Center.x << '\t' << Center.y << '\t' << Edge.x << '\t' << Edge.y << '\t' << DrawClr << '\t';
+	//if filled save the fill clr
 	if (FigGfxInfo.isFilled == true)
 	{
 		string FillClr = getColorName(FigGfxInfo.FillClr);
@@ -44,21 +47,26 @@ void CCirc::Save(ofstream &OutFile)
 		OutFile << "NO_FILL" << endl;
 	}
 }
+//Load function for circle ,Read all the parameters 
 void CCirc::Load(ifstream&InFile)
 {
+	//loading the parameters with a specific format
 	string DrawClr;
 	string FillClr;
 	InFile >> ID >> Center.x >> Center.y >> Edge.x >> Edge.y;
 	InFile >> DrawClr;
 	FigGfxInfo.DrawClr = getColorObject(DrawClr);
 	InFile >> FillClr;
+	//if filled set the fill clr
 	if (FillClr == "NO_FILL")
 	{
 		FigGfxInfo.isFilled = false;
 	}
 	else {
+		FigGfxInfo.isFilled = true;
 		FigGfxInfo.FillClr = getColorObject(FillClr);
 	}
+	///set the border width and calc the radius
 	FigGfxInfo.BorderWdth = UI.PenWidth;
 	Radius = CalcDistance(Center, Edge);
 }

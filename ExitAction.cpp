@@ -6,25 +6,15 @@
 
 
 ExitAction::ExitAction(ApplicationManager *pApp): Action(pApp)
-{
-}
+{}
 
 
 void ExitAction::ReadActionParameters()
-{
-	//Get a Pointer to the Input / Output Interfaces
-	Output* pOut = pManager->GetOutput();
-	Input* pIn = pManager->GetInput();
-
-	pOut->PrintMessage("EXIT!!");
-
-
-
-}
+{}
 
 //Execute action (Exit action)
 void ExitAction::Execute()
 {
+	//ems7 el clipboard ya jimmy :)
 	ReadActionParameters();
-	
 }

@@ -47,11 +47,14 @@ Point CRectangle::highestPoint()
 {
 	return GetHighestPoint(Corner1,Corner2);
 }
+//Save function for Rectangle ,Read all the parameters 
 void CRectangle::Save(ofstream &OutFile)
 {
+	//saving the parameters with a specific format
 	string DrawClr = getColorName(FigGfxInfo.DrawClr);
 
 	OutFile << rect << '\t' << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t' << Corner2.x << '\t' << Corner2.y << '\t' << DrawClr << '\t';
+	//if filled save the fill clr
 	if (FigGfxInfo.isFilled == true)
 	{
 		string FillClr = getColorName(FigGfxInfo.FillClr);
@@ -61,19 +64,23 @@ void CRectangle::Save(ofstream &OutFile)
 		OutFile << "NO_FILL" << endl;
 	}
 }
+//Load function for Rectangle ,Read all the parameters 
 void CRectangle::Load(ifstream&InFile)
 {
+	//loading the parameters with a specific format
 	string DrawClr;
 	string FillClr;
 	InFile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y;
 	InFile >> DrawClr;
 	FigGfxInfo.DrawClr = getColorObject(DrawClr);
 	InFile >> FillClr;
+	//if filled set the fill clr
 	if (FillClr=="NO_FILL")
 	{
 		FigGfxInfo.isFilled = false;
 	}
 	else {
+		FigGfxInfo.isFilled = true;
 		FigGfxInfo.FillClr = getColorObject(FillClr);
 	}
 	FigGfxInfo.BorderWdth = UI.PenWidth;

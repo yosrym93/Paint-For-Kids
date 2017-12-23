@@ -196,6 +196,12 @@
     <ClCompile Include="ExitAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="BringToForward.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SendToBack.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -335,6 +341,12 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="BringToForward.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SendToBack.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

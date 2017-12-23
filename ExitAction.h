@@ -5,7 +5,7 @@ class ExitAction :public Action
 {
 public:
 	ExitAction(ApplicationManager *pApp);
-	//
+	
 	virtual void ReadActionParameters();
 
 	//Execute action (Exit action)

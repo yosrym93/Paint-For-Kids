@@ -29,6 +29,7 @@ void LoadAction::ReadActionParameters()
 	//Clear the status bar
 	InputFile.open(fileName);
 	pOut->ClearDrawArea();
+	//check if the file doesnot exists
 	if (InputFile.is_open())
 	{
 		pOut->PrintMessage("Your file has been successfully loaded");
@@ -40,8 +41,10 @@ void LoadAction::ReadActionParameters()
 void LoadAction::Execute()
 {
 	ReadActionParameters();
+	//check if the file is opened first
 	if (InputFile.is_open())
 	{
+		//read from the file the current draw clr & fill clr &number of figuers 
 		CFigure*pFig=NULL;
 		int numberOfFiguers;
 		string DrawClr;
@@ -51,7 +54,9 @@ void LoadAction::Execute()
 		InputFile >> FillClr;
 		UI.FillColor = getColorObject(FillClr);
 		InputFile >> numberOfFiguers ;
+		//cleaning the figlist before loading the file
 		pManager->ClearFigList();
+		// Loop all figures ,identify the type ,then create an obj of the specified type,add to the figlist  after the loading it
 		for (int i = 0; i < numberOfFiguers; i++)
 		{
 			int shapeType;
@@ -78,16 +83,19 @@ void LoadAction::Execute()
 				pFig = NULL;
 				break;
 			}
+			//loading the parameters of each figure 
 			pFig->Load(InputFile);
 			if (pFig != NULL)
 			{	
+				//seneding it to the application manager to add them
 				pManager->AddFigure(pFig);
 			}
 		}
-
+		//close the file after looping 
 		InputFile.close();
 	}
 }
+//function that get a string clr name returning a clr obj
 color LoadAction::getColorObject(string name)const
 {
 	if (name == "RED")

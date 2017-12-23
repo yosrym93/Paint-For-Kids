@@ -138,6 +138,7 @@
     <ClCompile Include="Actions\SelectAction.cpp" />
     <ClCompile Include="Actions\ToPlayAction.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="BringToForward.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\image.cpp" />
@@ -190,6 +191,7 @@
     <ClCompile Include="PickByColor.cpp" />
     <ClCompile Include="PickByType.cpp" />
     <ClCompile Include="PasteAction.cpp" />
+    <ClCompile Include="SendToBack.cpp" />
     <ClCompile Include="ToDrawAction.cpp" />
     <ClCompile Include="SaveAction.cpp" />
   </ItemGroup>
@@ -203,6 +205,7 @@
     <ClInclude Include="Actions\SelectAction.h" />
     <ClInclude Include="Actions\ToPlayAction.h" />
     <ClInclude Include="ApplicationManager.h" />
+    <ClInclude Include="BringToForward.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -243,6 +246,7 @@
     <ClInclude Include="PickByColor.h" />
     <ClInclude Include="PickByType.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="SendToBack.h" />
     <ClInclude Include="ToDrawAction.h" />
     <ClInclude Include="SaveAction.h" />
   </ItemGroup>

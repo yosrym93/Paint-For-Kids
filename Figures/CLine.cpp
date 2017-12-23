@@ -39,27 +39,27 @@ void CLine::PrintInfo(Output* pOut) const {
 		+ to_string(int(CalcDistance(start,end)));
 	pOut->PrintMessage(message);
 }
-
+//Save function for Line ,Read all the parameters 
 void CLine::Save(ofstream &OutFile)
 {
+	//saving the parameters with a specific format
 	string DrawClr = getColorName(FigGfxInfo.DrawClr);
 	OutFile << line << '\t' << ID << '\t' << start.x << '\t' << start.y << '\t' << end.x << '\t' << end.y << '\t' << DrawClr << '\t' << endl;
 }
+//Load function for Line ,Read all the parameters 
 void CLine::Load(ifstream &InFile)
 {
+	//loading the parameters with a specific format
 	string DrawClr;
 	InFile >> ID >> start.x >> start.y >> end.x >> end.y;
 	InFile >> DrawClr;
 	FigGfxInfo.DrawClr = getColorObject(DrawClr);
-	//FigGfxInfo.isFilled = false;
 	FigGfxInfo.BorderWdth = UI.PenWidth;
 
 }
 CFigure* CLine::copy()
 {
 	return new CLine(*this);
-
-
 }
 CFigure* CLine::paste(int transX,int transY)
 {
