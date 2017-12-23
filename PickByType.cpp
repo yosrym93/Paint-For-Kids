@@ -54,12 +54,12 @@ void PickByType::ReadActionParameters()
 		else if (dynamic_cast<CCirc*>(Fig))
 			figs[2]++;
 		else figs[3]++;
-		for (int i = 0;i < 4;i++)
-			if (figs[i] != 0)no_figs++;
 
 
 
-	}
+
+	}		for (int i = 0;i < 4;i++)
+		if (figs[i] != 0)no_figs++;
 }
 
 void PickByType::Execute()

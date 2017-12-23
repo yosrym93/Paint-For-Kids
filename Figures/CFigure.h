@@ -48,7 +48,8 @@ public:
 
 	virtual void PrintInfo(Output* pOut) const = 0;	//print all figure info on the status bar
 	virtual CFigure* copy() = 0;
-	virtual CFigure* paste(Point) = 0;
+	virtual CFigure* paste(int, int) = 0;//e3ml pure wshel elableha
+	virtual Point highestPoint() = 0; //e3ml pure
 	virtual ~CFigure();
 };
 

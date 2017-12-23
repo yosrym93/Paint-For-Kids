@@ -69,13 +69,19 @@ CFigure* CCirc::copy()
 {
 	return new CCirc(*this);
 }
-CFigure* CCirc::paste(Point P)
+CFigure* CCirc::paste(int transX, int transY)
 {
-	if(P.y - UI.ToolBarHeight < Radius)
-		P.y += Radius;
-	Center = P;
-	Edge.x = P.x;
-	Edge.y = P.y + Radius;
-	
-	return this;
+	Center.x += transX;
+	Center.y += transY;
+	Edge.x += transX;
+	Edge.y += transY;
+	return new CCirc(*this);
+}
+
+Point CCirc::highestPoint()
+{
+	Point HP;
+	HP.x = Center.x;
+	HP.y = Center.y - Radius;
+	return HP;
 }

@@ -17,5 +17,6 @@ public:
 	virtual void Save(ofstream &OutFile);
 	virtual void Load(ifstream &Infile);
 	virtual CFigure* copy();
-	virtual CFigure* paste(Point);
+	virtual CFigure* paste(int, int);
+	virtual Point highestPoint();
 };

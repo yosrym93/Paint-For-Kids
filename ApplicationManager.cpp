@@ -27,14 +27,13 @@ ApplicationManager::ApplicationManager()
 	pIn = pOut->CreateInput();
 	
 	FigCount = 0;
-
-	Clipboard = NULL;
-	isCopied = false;
+	clipboardCount = 0;
 	//Create an array of figure pointers and set them to NULL
 	//and intialise SelectedFigs array to NULL
 	for (int i = 0; i < MaxFigCount; i++) {
 		FigList[i] = NULL;
 		SelectedFigs[i] = NULL;
+		Clipboard[i] = NULL;
 	}
 	//initialise selectedCount to 0
 	selectedCount = 0;
@@ -254,13 +253,11 @@ void ApplicationManager::ClearFigList()
 		delete FigList[i];
 		FigList[i] = NULL;
 	}
-	for (int i = 0; i < selectedCount; i++)
-	{
-		SelectedFigs[i] = NULL;
-	}
-	selectedCount = 0;
 	FigCount = 0;
+	ClearSelectedFigs();
 }
+
+
 
 //==================================================================================//
 //							Select Functions										//
@@ -296,33 +293,58 @@ void ApplicationManager::RemoveSelectedFigure(CFigure* sf) {
 	}
 }
 
+void ApplicationManager::ClearSelectedFigs() {
+	for (int i = 0; i < selectedCount; i++)
+	{
+		SelectedFigs[i] = NULL;
+	}
+	selectedCount = 0;
+}
+
 //==================================================================================//
 //							Copy/Cut/Paste Functions								//
 //==================================================================================//
-
-void ApplicationManager::SetClipboard(CFigure* f)
+void ApplicationManager::setClipboardCount(int c)
 {
-	if (!IsCopied() && Clipboard != NULL)
-		delete Clipboard;
-
-	Clipboard = f;
-	setCopied(false);
+	clipboardCount = c;
+}
+int ApplicationManager::getClipboardCount()
+{
+	return clipboardCount;
 }
 //////////////////////////////////////////////////////////////////////////////////
-CFigure* ApplicationManager::GetClipboard() const
+void ApplicationManager::SetClipboard(CFigure** f)
+{
+	clearClipboard();
+	for (int i = 0; i<selectedCount;i++)
+	Clipboard[i] = f[i];
+	setClipboardCount(selectedCount);
+}
+void ApplicationManager::SetClipboard(CFigure*const* f)
+{
+	clearClipboard();
+	for (int i = 0; i<selectedCount;i++)
+		Clipboard[i] = f[i];
+	setClipboardCount(selectedCount);
+}
+//////////////////////////////////////////////////////////////////////////////////
+CFigure*const* ApplicationManager::GetClipboard() const
 {
 	return Clipboard;
 }
+
 //////////////////////////////////////////////////////////////////////////////////
-void ApplicationManager::setCopied(bool C)
+void ApplicationManager::clearClipboard()
 {
-	isCopied = C;
+	if ( Clipboard != NULL)
+		for (int i = 0;i < clipboardCount;i++)
+		{
+			delete Clipboard[i];
+			pOut->PrintMessage("Alhamdulillah");
+			Clipboard[i] = NULL;
+		}
 }
-//////////////////////////////////////////////////////////////////////////////////
-bool ApplicationManager::IsCopied()
-{
-	return isCopied;
-}
+
 
 //==================================================================================//
 //							Save/Load Functions										//

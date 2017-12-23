@@ -8,7 +8,9 @@ class CutAction :
 	public Action
 {
 private:
-	CFigure* selectedFigure;
+	CFigure*const* SelectedFigs;
+	int selectedCount;
+
 public:
 	CutAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

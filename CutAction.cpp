@@ -5,31 +5,34 @@
 
 
 
-CutAction::CutAction(ApplicationManager*pApp):Action(pApp) , selectedFigure(NULL)
+CutAction::CutAction(ApplicationManager*pApp):Action(pApp) 
 {
 }
 void CutAction::ReadActionParameters()
 {
-	//selectedFigure = pManager->GetSelectedFigure();
+	SelectedFigs = pManager->GetSelectedFigures();
+	selectedCount = pManager->GetSelectedCount();
 	Output* pOut = pManager->GetOutput();
 
 
-	if (selectedFigure != NULL)
-		pOut->PrintMessage("Cut figure : Selected figure moved into clipboard");
+	if (SelectedFigs[0] != NULL)
+		pOut->PrintMessage("Cut figure : Selected figures moved into clipboard");
 
-	if (selectedFigure == NULL)
+	if (SelectedFigs[0] == NULL)
 		pOut->PrintMessage("Cut figure : Select a figure first");
 }
 void CutAction::Execute()
 {
 	ReadActionParameters();
-	if (selectedFigure != NULL)
+	if (SelectedFigs[0] != NULL)
 	{
-		selectedFigure->SetSelected(false);
-		//pManager->SetSelectedFigure(NULL);
-		pManager->SetClipboard(selectedFigure);
-		pManager->RemoveFig(selectedFigure->GetID());
-		
+		for (int i = 0; i < selectedCount;i++)
+			SelectedFigs[i]->SetSelected(false);
+		pManager->SetClipboard(SelectedFigs);
+
+		for (int i = 0; i <selectedCount; i++ )		
+			pManager->RemoveFig(SelectedFigs[i]->GetID());
+		pManager->ClearSelectedFigs();
 	}
 }
 
