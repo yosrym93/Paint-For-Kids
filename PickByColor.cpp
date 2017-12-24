@@ -239,8 +239,12 @@ void PickByColor::Execute()
 						picked_color_no--;
 					}
 					else if (clickedFig->HiddenStatus() == true);
-					else PrntScore(2);
-					;
+					else {
+						PrntScore(2);
+						clickedFig->Hide();
+						pManager->UpdateInterface();
+
+					}
 				}
 			}
 			else
