@@ -327,40 +327,40 @@ void PickByBoth::Execute()
 				if (clickedFig != NULL)
 				{
 
-					if (dynamic_cast<CLine*>(Fig) && dynamic_cast<CLine*>(clickedFig) && (clickedFig->GetGfxInfo().DrawClr == Fig->GetGfxInfo().DrawClr) && clickedFig->HiddenStatus() == false)
+					if (dynamic_cast<CLine*>(Fig) && dynamic_cast<CLine*>(clickedFig) && (clickedFig->GetGfxInfo().DrawClr == Fig->GetGfxInfo().DrawClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (dynamic_cast<CRectangle*>(Fig) && dynamic_cast<CRectangle*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr) && clickedFig->HiddenStatus() == false)
+					else if (dynamic_cast<CRectangle*>(Fig) && dynamic_cast<CRectangle*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (dynamic_cast<CCirc*>(Fig) && dynamic_cast<CCirc*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr) && clickedFig->HiddenStatus() == false)
+					else if (dynamic_cast<CCirc*>(Fig) && dynamic_cast<CCirc*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (dynamic_cast<CTrig*>(Fig) && dynamic_cast<CTrig*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr) && clickedFig->HiddenStatus() == false)
+					else if (dynamic_cast<CTrig*>(Fig) && dynamic_cast<CTrig*>(clickedFig) && (clickedFig->GetGfxInfo().FillClr == Fig->GetGfxInfo().FillClr))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_comb_no--;
 					}
-					else if (clickedFig->HiddenStatus() == true);
-					else {
+
+					else 
+					{
 						PrntScore(2);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
-
 					}
 				}
 			}

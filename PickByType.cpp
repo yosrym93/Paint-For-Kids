@@ -109,40 +109,39 @@ void PickByType::Execute()
 					if (clickedFig != NULL)
 					{
 
-						if ((dynamic_cast<CLine*>(clickedFig)) && clickedFig->HiddenStatus() == false && (dynamic_cast<CLine*>(Fig)))
+						if ((dynamic_cast<CLine*>(clickedFig)) && (dynamic_cast<CLine*>(Fig)))
 						{
 							PrntScore(1);
 							clickedFig->Hide();
 							pManager->UpdateInterface();
 							picked_fig_no--;
 						}
-						else if ((dynamic_cast<CTrig*>(clickedFig)) && clickedFig->HiddenStatus() == false && (dynamic_cast<CTrig*>(Fig)))
+						else if ((dynamic_cast<CTrig*>(clickedFig)) && (dynamic_cast<CTrig*>(Fig)))
 						{
 							PrntScore(1);
 							clickedFig->Hide();
 							pManager->UpdateInterface();
 							picked_fig_no--;
 						}
-						else if ((dynamic_cast<CCirc*>(clickedFig)) && clickedFig->HiddenStatus() == false && (dynamic_cast<CCirc*>(Fig)))
+						else if ((dynamic_cast<CCirc*>(clickedFig)) && (dynamic_cast<CCirc*>(Fig)))
 						{
 							PrntScore(1);
 							clickedFig->Hide();
 							pManager->UpdateInterface();
 							picked_fig_no--;
 						}
-						else if ((dynamic_cast<CRectangle*>(clickedFig)) && clickedFig->HiddenStatus() == false && (dynamic_cast<CRectangle*>(Fig)))
+						else if ((dynamic_cast<CRectangle*>(clickedFig)) && (dynamic_cast<CRectangle*>(Fig)))
 						{
 							PrntScore(1);
 							clickedFig->Hide();
 							pManager->UpdateInterface();
 							picked_fig_no--;
 						}
-						else if (clickedFig->HiddenStatus() == true);
-						else {
+						else 
+						{
 							PrntScore(2);
 							clickedFig->Hide();
 							pManager->UpdateInterface();
-
 						}
 					}
 				}

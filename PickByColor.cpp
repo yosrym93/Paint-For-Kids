@@ -217,33 +217,32 @@ void PickByColor::Execute()
 				if (clickedFig != NULL)
 				{
 
-					if ((!(Fig->GetGfxInfo().isFilled) && !(dynamic_cast<CLine*>(Fig))) && (!(clickedFig->GetGfxInfo().isFilled) && !(dynamic_cast<CLine*>(clickedFig))) && clickedFig->HiddenStatus() == false)
+					if ((!(Fig->GetGfxInfo().isFilled) && !(dynamic_cast<CLine*>(Fig))) && (!(clickedFig->GetGfxInfo().isFilled) && !(dynamic_cast<CLine*>(clickedFig))))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_color_no--;
 					}
-					else if ((dynamic_cast<CLine*>(clickedFig)) && clickedFig->GetGfxInfo().DrawClr == AssignColor(Fig) && clickedFig->HiddenStatus() == false)
+					else if ((dynamic_cast<CLine*>(clickedFig)) && clickedFig->GetGfxInfo().DrawClr == AssignColor(Fig))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_color_no--;
 					}
-					else if (!(dynamic_cast<CLine*>(clickedFig)) && clickedFig->GetGfxInfo().isFilled && clickedFig->GetGfxInfo().FillClr == AssignColor(Fig) && clickedFig->HiddenStatus() == false)
+					else if (!(dynamic_cast<CLine*>(clickedFig)) && clickedFig->GetGfxInfo().isFilled && clickedFig->GetGfxInfo().FillClr == AssignColor(Fig))
 					{
 						PrntScore(1);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
 						picked_color_no--;
 					}
-					else if (clickedFig->HiddenStatus() == true);
-					else {
+					else 
+					{
 						PrntScore(2);
 						clickedFig->Hide();
 						pManager->UpdateInterface();
-
 					}
 				}
 			}
