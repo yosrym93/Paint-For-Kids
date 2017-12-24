@@ -56,11 +56,11 @@ public:
 	// -- Copy/Cut/Paste Functions -- //
 
 	void setClipboardCount(int);			//Sets no of figs currently in clipboard
-	int getClipboardCount();				
-	void SetClipboard(CFigure**);	
-	void SetClipboard(CFigure*const* );
-	CFigure*const* GetClipboard()const;
-	void clearClipboard();
+	int getClipboardCount();				//Gets no. of figures in clipboard
+	void SetClipboard(CFigure**);			//Sets figures in clipboard
+	void SetClipboard(CFigure*const* );		//as the previous but for automatically allocated array in copy
+	CFigure*const* GetClipboard()const;		//returns the array in clipboard
+	void clearClipboard();					//clears figures in clipboard upon any new copy/cut process
 
 
 	// -- Save/Load Functions -- //
