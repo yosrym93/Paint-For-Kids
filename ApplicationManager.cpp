@@ -41,6 +41,8 @@ ApplicationManager::ApplicationManager()
 	}
 	//initialise selectedCount to 0
 	selectedCount = 0;
+
+	pOut->PrintMessage("Welcome to a world of wonders ! (i.e colors and stuff)");
 }
 
 //==================================================================================//
