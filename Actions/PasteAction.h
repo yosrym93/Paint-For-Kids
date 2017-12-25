@@ -2,9 +2,9 @@
 #ifndef PASTE_ACTION_H
 #define PASTE_ACTION_H
 
-#include "Actions\Action.h"
-#include "Figures\CFigure.h"
-#include "ApplicationManager.h"
+#include "Action.h"
+#include "..\Figures\CFigure.h"
+#include "..\ApplicationManager.h"
 class PasteAction :
 	public Action
 {

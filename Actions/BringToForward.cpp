@@ -1,15 +1,16 @@
-#include "SendToBack.h"
-#include "../paintforkids/ApplicationManager.h"
+#include"BringToForward.h"
+#include "../ApplicationManager.h"
 
-#include "../paintforkids/GUI/Input.h"
-#include "../paintforkids/GUI/output.h"
+#include "../GUI/Input.h"
+#include "../GUI/output.h"
 
 
-SendToBack::SendToBack(ApplicationManager *pApp) :Action(pApp)
+BringToForward::BringToForward(ApplicationManager *pApp) :Action(pApp)
 {
 }
-//Read parameters for the STB action
-void SendToBack::ReadActionParameters()
+
+//Read parameters for BTF action
+void BringToForward::ReadActionParameters()
 {
 	//Checks if a single figure is selected
 	if (pManager->GetSelectedFigures()[1] == NULL && pManager->GetSelectedFigures()[0] != NULL) {
@@ -17,25 +18,25 @@ void SendToBack::ReadActionParameters()
 		SelectedFig = pManager->GetSelectedFigures()[0];
 		//if there is a figure selected store its id
 		SelectedID = pManager->GetSelectedFigures()[0]->GetID();
-		}
+	}
 	else
 		//NULL if no figures, or more than one figure are selected
 		SelectedFig = NULL;
 }
-//excute the STB action
-void SendToBack::Execute()
+//excute BTF action
+void BringToForward::Execute()
 {
 	ReadActionParameters();
 	//Get a Pointer to the Output Interface
 	Output* pOut = pManager->GetOutput();
-	// if one figure is selected send it to the back
+	//if one figure is selected bring it to the front
 	if (SelectedFig)
 	{
-		pManager->SortSTB(SelectedID);
-		pOut->PrintMessage("Figure sent to back");
+		pManager->SortBTF(SelectedID);
+		pOut->PrintMessage("Figure brought to the front");
 	}
 	//else print one figure needs to be selected
 	else
-		pOut->PrintMessage("Send To Back : One figure needs to be selected");
+		pOut->PrintMessage("Bring To Forward: One figure needs to be selected");
 
 }

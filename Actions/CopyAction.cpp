@@ -1,7 +1,7 @@
 #include "CopyAction.h"
-#include"ApplicationManager.h"
-#include "GUI\Input.h"
-#include "GUI\Input.h"
+#include"..\ApplicationManager.h"
+#include "..\GUI\Input.h"
+#include "..\GUI\Input.h"
 #include "PasteAction.h"
 
 

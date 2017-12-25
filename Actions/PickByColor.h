@@ -1,6 +1,6 @@
 #pragma once
-#include "Figures\CFigure.h"
-#include "Actions\Action.h"
+#include "..\Figures\CFigure.h"
+#include "Action.h"
 
 class PickByColor :
 	public Action

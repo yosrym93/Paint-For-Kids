@@ -1,11 +1,11 @@
 #include "PickByType.h"
-#include "ApplicationManager.h"
-#include "Figures\CRectangle.h"
-#include "Figures\CCirc.h"
-#include "Figures\CTrig.h"
-#include "Figures\CLine.h"
-#include "GUI\input.h"
-#include "GUI\Output.h"
+#include "..\ApplicationManager.h"
+#include "..\Figures\CRectangle.h"
+#include "..\Figures\CCirc.h"
+#include "..\Figures\CTrig.h"
+#include "..\Figures\CLine.h"
+#include "..\GUI\input.h"
+#include "..\GUI\Output.h"
 
 
 PickByType::PickByType(ApplicationManager*pApp) :Action(pApp)

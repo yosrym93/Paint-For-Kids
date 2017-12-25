@@ -1,8 +1,8 @@
 #include "ExitAction.h"
-#include "../paintforkids/ApplicationManager.h"
+#include "..\ApplicationManager.h"
 
-#include "../paintforkids/GUI/Input.h"
-#include "../paintforkids/GUI/output.h"
+#include "..\GUI/Input.h"
+#include "..\GUI/output.h"
 
 
 ExitAction::ExitAction(ApplicationManager *pApp): Action(pApp)

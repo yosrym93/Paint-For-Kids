@@ -1,6 +1,6 @@
 #pragma once
-#include "Actions\Action.h"
-#include "Figures\CFigure.h"
+#include "Action.h"
+#include "..\Figures\CFigure.h"
 class BringToForward :public Action
 {
 	CFigure* SelectedFig;

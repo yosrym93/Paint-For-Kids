@@ -1,7 +1,7 @@
 #pragma once
-#include "Figures\CFigure.h"
+#include "..\Figures\CFigure.h"
 
-#include "Actions\Action.h"
+#include "Action.h"
 class PickByType :
 	public Action
 {

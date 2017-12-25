@@ -1,12 +1,12 @@
 #include"LoadAction.h"
-#include "../paintforkids/ApplicationManager.h"
+#include "..\ApplicationManager.h"
 
-#include "../paintforkids/GUI/Input.h"
-#include "../paintforkids/GUI/output.h"
-#include"Figures\CRectangle.h"
-#include"Figures\CCirc.h"
-#include"Figures\CLine.h"
-#include"Figures\CTrig.h"
+#include "..\GUI/Input.h"
+#include "..\GUI/output.h"
+#include"..\Figures\CRectangle.h"
+#include"..\Figures\CCirc.h"
+#include"..\Figures\CLine.h"
+#include"..\Figures\CTrig.h"
 
 
 LoadAction::LoadAction(ApplicationManager *pApp) :Action(pApp)

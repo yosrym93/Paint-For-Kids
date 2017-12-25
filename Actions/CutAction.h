@@ -1,9 +1,9 @@
 #pragma once
 #ifndef CUT_ACTION_H
 #define CUT_ACTION_H
-#include "Actions\Action.h"
-#include "Actions\SelectAction.h"
-#include "Figures\CFigure.h"
+#include "Action.h"
+#include "SelectAction.h"
+#include "..\Figures\CFigure.h"
 class CutAction :
 	public Action
 {

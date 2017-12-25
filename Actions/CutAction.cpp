@@ -1,7 +1,7 @@
 #include "CutAction.h"
-#include"ApplicationManager.h"
-#include "GUI\Input.h"
-#include "GUI\Input.h"
+#include"..\ApplicationManager.h"
+#include "..\GUI\Input.h"
+#include "..\GUI\Input.h"
 
 
 

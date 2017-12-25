@@ -1,10 +1,10 @@
 #include "PickByColor.h"
-#include "CMUgraphicsLib\colors.cpp" 
-#include "ApplicationManager.h"
+#include "..\CMUgraphicsLib\colors.cpp" 
+#include "..\ApplicationManager.h"
 
-#include "GUI\input.h"
-#include "GUI\Output.h"
-#include "Figures\CLine.h"
+#include "..\GUI\input.h"
+#include "..\GUI\Output.h"
+#include "..\Figures\CLine.h"
 
 
 color PickByColor::AssignColor(CFigure * Fig)

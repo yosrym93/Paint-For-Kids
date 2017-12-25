@@ -1,8 +1,8 @@
 #include "PasteAction.h"
-#include "Figures\CFigure.h"
-#include "ApplicationManager.h"
-#include "GUI\Input.h"
-#include"GUI\Output.h"
+#include "..\Figures\CFigure.h"
+#include "..\ApplicationManager.h"
+#include "..\GUI\Input.h"
+#include"..\GUI\Output.h"
 
 
 PasteAction::PasteAction(ApplicationManager* pApp):Action(pApp)

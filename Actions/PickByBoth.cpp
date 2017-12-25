@@ -1,11 +1,11 @@
 #include "PickByBoth.h"
-#include "ApplicationManager.h"
-#include "Figures\CRectangle.h"
-#include "Figures\CLine.h"
-#include "Figures\CTrig.h"
-#include "Figures\CCirc.h"
-#include "GUI\input.h"
-#include "GUI\Output.h"
+#include "..\ApplicationManager.h"
+#include "..\Figures\CRectangle.h"
+#include "..\Figures\CLine.h"
+#include "..\Figures\CTrig.h"
+#include "..\Figures\CCirc.h"
+#include "..\GUI\input.h"
+#include "..\GUI\Output.h"
 
 
 

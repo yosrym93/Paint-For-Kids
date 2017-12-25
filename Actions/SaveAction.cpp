@@ -1,8 +1,8 @@
 #include"SaveAction.h"
-#include "../paintforkids/ApplicationManager.h"
+#include "..\ApplicationManager.h"
 
-#include "../paintforkids/GUI/Input.h"
-#include "../paintforkids/GUI/output.h"
+#include "..\GUI/Input.h"
+#include "..\GUI/output.h"
 
 SaveAction::SaveAction(ApplicationManager *pApp) :Action(pApp)
 {
