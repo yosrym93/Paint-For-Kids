@@ -47,9 +47,10 @@ public:
 	virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
 	virtual void PrintInfo(Output* pOut) const = 0;	//print all figure info on the status bar
-	virtual CFigure* copy() = 0;
-	virtual CFigure* paste(int, int) = 0;//e3ml pure wshel elableha
-	virtual Point highestPoint() = 0; //e3ml pure
+	virtual CFigure* copy() = 0; //Copy figure
+	virtual CFigure* paste(int, int) = 0;	//Paste figure
+	virtual Point highestPoint() = 0;	//Returns the highest point on the figure
+	virtual void Rotate() {};
 	virtual ~CFigure();
 };
 

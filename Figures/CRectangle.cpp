@@ -47,6 +47,7 @@ Point CRectangle::highestPoint()
 {
 	return GetHighestPoint(Corner1,Corner2);
 }
+
 //Save function for Rectangle ,Read all the parameters 
 void CRectangle::Save(ofstream &OutFile)
 {
@@ -85,3 +86,26 @@ void CRectangle::Load(ifstream&InFile)
 	}
 	FigGfxInfo.BorderWdth = UI.PenWidth;
 }
+//Sets x and y to the center point coordinates
+void CRectangle::getCenter(double &x, double& y)
+{
+	x = (Corner1.x + Corner2.x) / 2.0;
+	y = (Corner1.y + Corner2.y) / 2.0;
+}
+//Rotates the figure 90 degrees clockwise
+void CRectangle::Rotate() {
+	double CenterX, CenterY, newX, newY;
+	//Gets the center point coordinates (Point not used as it holds int values)
+	getCenter(CenterX, CenterY);
+	//Compute new coordinates for Corner 1
+	newX = CenterY - Corner1.y + CenterX;
+	newY = Corner1.x - CenterX + CenterY;
+	Corner1.x = round(newX);
+	Corner1.y = round(newY);
+	//Compute new coordinates for Corner 2
+	newX = CenterY - Corner2.y + CenterX;
+	newY = Corner2.x - CenterX + CenterY;
+	Corner2.x = round(newX);
+	Corner2.y = round(newY);
+}
+

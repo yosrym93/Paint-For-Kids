@@ -19,4 +19,6 @@ public:
 	virtual CFigure* copy();
 	virtual CFigure* paste(int, int);
 	virtual Point highestPoint();
+	virtual void getCenter(double&, double&);	//Sets x and y to the center point coordinates
+	virtual void Rotate();		//Rotates the figure 90 degrees clockwise
 };

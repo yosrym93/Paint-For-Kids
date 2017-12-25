@@ -74,3 +74,26 @@ Point CLine::highestPoint()
 {
 	return GetHighestPoint(start,end);
 }
+
+//Sets x and y to the center point coordinates
+void CLine::getCenter(double &x, double& y)
+{
+	x = (start.x + end.x) / 2.0;
+	y = (start.y + end.y) / 2.0;
+}
+//Rotates the figure 90 degrees clockwise
+void CLine::Rotate() {
+	double CenterX, CenterY, newX, newY;
+	//Gets the center point coordinates (Point not used as it holds int values)
+	getCenter(CenterX, CenterY);
+	//Compute new coordinates for Corner 1
+	newX = CenterY - start.y + CenterX;
+	newY = start.x - CenterX + CenterY;
+	start.x = round(newX);
+	start.y = round(newY);
+	//Compute new coordinates for Corner 2
+	newX = CenterY - end.y + CenterX;
+	newY = end.x - CenterX + CenterY;
+	end.x = round(newX);
+	end.y = round(newY);
+}

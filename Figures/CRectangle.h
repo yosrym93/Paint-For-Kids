@@ -19,6 +19,8 @@ public:
 	virtual CFigure* copy();
 	virtual CFigure* paste(int, int);
 	virtual Point highestPoint();
+	virtual void getCenter(double&, double&);
+	virtual void Rotate();
 };
 
 #endif

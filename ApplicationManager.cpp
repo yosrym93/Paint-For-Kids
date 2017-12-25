@@ -20,6 +20,7 @@
 #include"ExitAction.h"
 #include"BringToForward.h"
 #include"SendToBack.h"
+#include"RotateAction.h"
 
 
 //Constructor
@@ -118,6 +119,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new BringToForward(this);
 			break;
 
+		//Rotate Action //
+		case ROTATE:
+			pAct = new RotateAction(this);
+			break;
 		//Play Mode Actions//
 		case P_H_TYPE:
 			pAct = new PickByType(this);
@@ -155,6 +160,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case STATUS:	//a click on the status bar ==> no action
 			return;
+
 	}
 	
 	//Execute the created action

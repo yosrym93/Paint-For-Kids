@@ -191,6 +191,7 @@
     <ClCompile Include="PickByColor.cpp" />
     <ClCompile Include="PickByType.cpp" />
     <ClCompile Include="PasteAction.cpp" />
+    <ClCompile Include="RotateAction.cpp" />
     <ClCompile Include="SendToBack.cpp" />
     <ClCompile Include="ToDrawAction.cpp" />
     <ClCompile Include="SaveAction.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="PickByColor.h" />
     <ClInclude Include="PickByType.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="RotateAction.h" />
     <ClInclude Include="SendToBack.h" />
     <ClInclude Include="ToDrawAction.h" />
     <ClInclude Include="SaveAction.h" />

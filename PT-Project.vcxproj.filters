@@ -202,6 +202,7 @@
     <ClCompile Include="SendToBack.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="RotateAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -347,6 +348,7 @@
     <ClInclude Include="SendToBack.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
+    <ClInclude Include="RotateAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

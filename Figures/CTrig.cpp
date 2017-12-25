@@ -130,3 +130,31 @@ Point CTrig::highestPoint()
 {
 	return GetHighestPoint(Corner1,Corner2,Corner3);
 }
+//Sets x and y to the center point coordinates
+void CTrig::getCenter(double &x, double& y)
+{
+	x = (Corner1.x + Corner2.x + Corner3.x) / 3.0;
+	y = (Corner1.y + Corner2.y + Corner3.y) / 3.0;
+}
+//Rotates the figure 90 degrees clockwise
+void CTrig::Rotate() {
+	double CenterX, CenterY, newX, newY;
+	//Gets the center point coordinates (Point not used as it holds int values)
+	getCenter(CenterX, CenterY);
+	//Compute new coordinates for Corner 1
+	newX = CenterY - Corner1.y + CenterX;
+	newY = Corner1.x - CenterX + CenterY;
+	Corner1.x = round(newX);
+	Corner1.y = round(newY);
+	//Compute new coordinates for Corner 2
+	newX = CenterY - Corner2.y + CenterX;
+	newY = Corner2.x - CenterX + CenterY;
+	Corner2.x = round(newX);
+	Corner2.y = round(newY);
+	//Compute new coordinates for Corner 3
+	newX = CenterY - Corner3.y + CenterX;
+	newY = Corner3.x - CenterX + CenterY;
+	Corner3.x = round(newX);
+	Corner3.y = round(newY);
+}
+

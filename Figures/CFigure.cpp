@@ -147,6 +147,8 @@ color CFigure::getColorObject(string name)const
 	}
 
 }
+
+
 CFigure::~CFigure()
 {
 }
