@@ -1,5 +1,5 @@
 ## Paint for Kids
-This is an educational project for OOP, written in C++. It is a simple paint program for kids. CMUGraphics library was used (provided by our educator). 
+This is an educational project for OOP, written in C++ using Visual Studio. It is a simple paint program for kids. CMUGraphics library was used (provided by our educator). 
 
 **Features**
 - Drawing different shapes (lines, triangles, circles, rectangles) with different border/fill colour.
